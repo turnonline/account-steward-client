@@ -1,3 +1,18 @@
+# Google App Engine generated folder
+appengine-generated/
+
+# IntelliJ IDEA Files #
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# eclipse Files #
+.classpath
+.project
+.settings/
+
+# Apache Maven Files #
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -8,5 +23,4 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
-!/.mvn/wrapper/maven-wrapper.jar
+*.DS_Store
