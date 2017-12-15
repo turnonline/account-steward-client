@@ -19,7 +19,7 @@
 package biz.turnonline.ecosystem.accountManagement.model;
 
 /**
- * Model definition for AccountCollection.
+ * Model definition for CountryCollection.
  * <p>
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the Account & Contact management. For a detailed
@@ -30,27 +30,27 @@ package biz.turnonline.ecosystem.accountManagement.model;
  * @author Google, Inc.
  */
 @SuppressWarnings( "javadoc" )
-public final class AccountCollection
+public final class CountryCollection
         extends com.google.api.client.json.GenericJson
 {
+
+    static
+    {
+        // hack to force ProGuard to consider Country used, since otherwise it would be stripped out
+        // see https://github.com/google/google-api-java-client/issues/543
+        com.google.api.client.util.Data.nullOf( Country.class );
+    }
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.util.List<Account> items;
-
-    static
-    {
-        // hack to force ProGuard to consider Account used, since otherwise it would be stripped out
-        // see https://github.com/google/google-api-java-client/issues/543
-        com.google.api.client.util.Data.nullOf( Account.class );
-    }
+    private java.util.List<Country> items;
 
     /**
      * @return value or {@code null} for none
      */
-    public java.util.List<Account> getItems()
+    public java.util.List<Country> getItems()
     {
         return items;
     }
@@ -58,22 +58,22 @@ public final class AccountCollection
     /**
      * @param items items or {@code null} for none
      */
-    public AccountCollection setItems( java.util.List<Account> items )
+    public CountryCollection setItems( java.util.List<Country> items )
     {
         this.items = items;
         return this;
     }
 
     @Override
-    public AccountCollection set( String fieldName, Object value )
+    public CountryCollection set( String fieldName, Object value )
     {
-        return ( AccountCollection ) super.set( fieldName, value );
+        return ( CountryCollection ) super.set( fieldName, value );
     }
 
     @Override
-    public AccountCollection clone()
+    public CountryCollection clone()
     {
-        return ( AccountCollection ) super.clone();
+        return ( CountryCollection ) super.clone();
     }
 
 }

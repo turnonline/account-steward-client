@@ -19,7 +19,7 @@
 package biz.turnonline.ecosystem.accountManagement.model;
 
 /**
- * Model definition for AccountPublicContact.
+ * Model definition for Country.
  * <p>
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the Account & Contact management. For a detailed
@@ -30,7 +30,7 @@ package biz.turnonline.ecosystem.accountManagement.model;
  * @author Google, Inc.
  */
 @SuppressWarnings( "javadoc" )
-public final class AccountPublicContact
+public final class Country
         extends com.google.api.client.json.GenericJson
 {
 
@@ -38,104 +38,104 @@ public final class AccountPublicContact
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String email;
+    private java.lang.String code;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String name;
+    private java.lang.String label;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String phone;
+    private java.lang.String locale;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String website;
+    private java.lang.Integer version;
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getEmail()
+    public java.lang.String getCode()
     {
-        return email;
+        return code;
     }
 
     /**
-     * @param email email or {@code null} for none
+     * @param code code or {@code null} for none
      */
-    public AccountPublicContact setEmail( java.lang.String email )
+    public Country setCode( java.lang.String code )
     {
-        this.email = email;
+        this.code = code;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getName()
+    public java.lang.String getLabel()
     {
-        return name;
+        return label;
     }
 
     /**
-     * @param name name or {@code null} for none
+     * @param label label or {@code null} for none
      */
-    public AccountPublicContact setName( java.lang.String name )
+    public Country setLabel( java.lang.String label )
     {
-        this.name = name;
+        this.label = label;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getPhone()
+    public java.lang.String getLocale()
     {
-        return phone;
+        return locale;
     }
 
     /**
-     * @param phone phone or {@code null} for none
+     * @param locale locale or {@code null} for none
      */
-    public AccountPublicContact setPhone( java.lang.String phone )
+    public Country setLocale( java.lang.String locale )
     {
-        this.phone = phone;
+        this.locale = locale;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getWebsite()
+    public java.lang.Integer getVersion()
     {
-        return website;
+        return version;
     }
 
     /**
-     * @param website website or {@code null} for none
+     * @param version version or {@code null} for none
      */
-    public AccountPublicContact setWebsite( java.lang.String website )
+    public Country setVersion( java.lang.Integer version )
     {
-        this.website = website;
+        this.version = version;
         return this;
     }
 
     @Override
-    public AccountPublicContact set( String fieldName, Object value )
+    public Country set( String fieldName, Object value )
     {
-        return ( AccountPublicContact ) super.set( fieldName, value );
+        return ( Country ) super.set( fieldName, value );
     }
 
     @Override
-    public AccountPublicContact clone()
+    public Country clone()
     {
-        return ( AccountPublicContact ) super.clone();
+        return ( Country ) super.clone();
     }
 
 }
