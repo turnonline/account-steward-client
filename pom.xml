@@ -89,8 +89,8 @@
     </dependencies>
 
     <properties>
-        <ctoolkit-library-bom.version>7-20171213.065206-2</ctoolkit-library-bom.version>
-        <ctoolkit-rest-facade-api.version>0.19</ctoolkit-rest-facade-api.version>
+        <ctoolkit-library-bom.version>7-20171216.014609-3</ctoolkit-library-bom.version>
+        <ctoolkit-rest-facade-api.version>0.20</ctoolkit-rest-facade-api.version>
         <ctoolkit-rest-facade-adapter.version>0.25-20171127.060338-3</ctoolkit-rest-facade-adapter.version>
         <jmockit.version>1.37</jmockit.version>
         <!-- jmockit settings for OpenJDK otherwise throws 'IllegalStateException: To run on OpenJDK 64-Bit Server VM use -javaagent..' -->
