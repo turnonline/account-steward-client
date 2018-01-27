@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Comvai, s.r.o.
+ * Copyright 2018 Comvai, s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 package biz.turnonline.ecosystem.account.client.adaptee;
 
 import biz.turnonline.ecosystem.accountManagement.AccountManagement;
-import biz.turnonline.ecosystem.accountManagement.model.Account;
+import biz.turnonline.ecosystem.accountManagement.model.SubAccount;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
 import org.ctoolkit.restapi.client.adaptee.NewExecutorAdaptee;
@@ -33,17 +33,19 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
- * The {@link Account} adaptee implementation.
+ * The {@link SubAccount} adaptee implementation.
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
-public class AccountAdaptee
+public class SubAccountAdaptee
         extends AbstractGoogleClientAdaptee<AccountManagement>
-        implements RestExecutorAdaptee<Account>, NewExecutorAdaptee<Account>
+        implements RestExecutorAdaptee<SubAccount>, NewExecutorAdaptee<SubAccount>
 {
     @Inject
-    public AccountAdaptee( AccountManagement client )
+    public SubAccountAdaptee( AccountManagement client )
     {
         super( client );
     }
@@ -52,7 +54,7 @@ public class AccountAdaptee
     public Object prepareDelete( @Nonnull Identifier identifier )
             throws IOException
     {
-        return client().accounts().delete( identifier.getString() );
+        return client().accounts().sub().delete( identifier.getString(), identifier.child().getString() );
     }
 
     @Override
@@ -68,25 +70,29 @@ public class AccountAdaptee
     public Object prepareGet( @Nonnull Identifier identifier )
             throws IOException
     {
-        return client().accounts().get( identifier.getString() );
+        return client().accounts().sub().get( identifier.getString(), identifier.child().getString() );
     }
 
     @Override
-    public Account executeGet( @Nonnull Object request,
-                               @Nullable Map<String, Object> parameters,
-                               @Nullable Locale locale )
+    public SubAccount executeGet( @Nonnull Object request,
+                                  @Nullable Map<String, Object> parameters,
+                                  @Nullable Locale locale )
             throws IOException
     {
-        return Account.class.cast( execute( request, parameters ) );
+        return SubAccount.class.cast( execute( request, parameters ) );
     }
 
     @Override
-    public Object prepareInsert( @Nonnull Account resource,
+    public Object prepareInsert( @Nonnull SubAccount resource,
                                  @Nullable Identifier parentKey,
                                  @Nullable MediaProvider provider )
             throws IOException
     {
-        return client().accounts().insert( resource );
+        String errorMessage = "Sub account insert requires login email as a parent key.";
+        checkNotNull( parentKey, errorMessage );
+        checkNotNull( parentKey.getString(), errorMessage );
+
+        return client().accounts().sub().insert( parentKey.getString(), resource );
     }
 
     @Override
@@ -102,20 +108,24 @@ public class AccountAdaptee
     public Object prepareList( @Nullable Identifier parentKey )
             throws IOException
     {
-        return client().accounts().list();
+        String errorMessage = "Sub account list retrieval requires login email as a parent key.";
+        checkNotNull( parentKey, errorMessage );
+        checkNotNull( parentKey.getString(), errorMessage );
+
+        return client().accounts().sub().list( parentKey.getString() );
     }
 
     @Override
-    public List<Account> executeList( @Nonnull Object request,
-                                      @Nullable Map<String, Object> parameters,
-                                      @Nullable Locale locale,
-                                      @Nullable Integer start,
-                                      @Nullable Integer length,
-                                      @Nullable String orderBy,
-                                      @Nullable Boolean ascending )
+    public List<SubAccount> executeList( @Nonnull Object request,
+                                         @Nullable Map<String, Object> parameters,
+                                         @Nullable Locale locale,
+                                         @Nullable Integer start,
+                                         @Nullable Integer length,
+                                         @Nullable String orderBy,
+                                         @Nullable Boolean ascending )
             throws IOException
     {
-        AccountManagement.Accounts.List list = ( AccountManagement.Accounts.List ) request;
+        AccountManagement.Accounts.Sub.List list = ( AccountManagement.Accounts.Sub.List ) request;
         if ( start != null && start > 0 )
         {
             list.setStart( start );
@@ -137,21 +147,21 @@ public class AccountAdaptee
     }
 
     @Override
-    public Account executeNew( @Nonnull Object request,
-                               @Nullable Map<String, Object> parameters,
-                               @Nullable Locale locale )
+    public SubAccount executeNew( @Nonnull Object request,
+                                  @Nullable Map<String, Object> parameters,
+                                  @Nullable Locale locale )
             throws IOException
     {
         return null;
     }
 
     @Override
-    public Object prepareUpdate( @Nonnull Account resource,
+    public Object prepareUpdate( @Nonnull SubAccount resource,
                                  @Nonnull Identifier identifier,
                                  @Nullable MediaProvider provider )
             throws IOException
     {
-        return client().accounts().update( identifier.getString(), resource );
+        return client().accounts().sub().update( identifier.getString(), identifier.child().getString(), resource );
     }
 
     @Override

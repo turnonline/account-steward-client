@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Comvai, s.r.o.
+ * Copyright 2018 Comvai, s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,6 @@ public class Account
         implements Serializable
 {
     private static final long serialVersionUID = 4192743023975738655L;
-
-    private Long id = null;
 
     private String email = null;
 
@@ -54,7 +52,7 @@ public class Account
 
     private String businessName = null;
 
-    private String legalForm = "LTD";
+    private String legalForm = "ltd";
 
     private String street = null;
 
@@ -89,26 +87,7 @@ public class Account
     private AccountPostalAddress postalAddress = null;
 
     /**
-     * The account unique identification.
-     **/
-    public Account id( Long id )
-    {
-        this.id = id;
-        return this;
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId( Long id )
-    {
-        this.id = id;
-    }
-
-    /**
-     * The account login email address, taken from the login provider as an authenticated email.
+     * The login email address as the account unique identification, taken from the login provider as an authenticated email.
      **/
     public Account email( String email )
     {
@@ -222,7 +201,7 @@ public class Account
     }
 
     /**
-     * The personal account, person name prefix.
+     * The personal / sub account, person name prefix.
      **/
     public Account prefix( String prefix )
     {
@@ -241,7 +220,7 @@ public class Account
     }
 
     /**
-     * The personal account, person first name.
+     * The personal / sub account, person first name.
      **/
     public Account firstName( String firstName )
     {
@@ -260,7 +239,7 @@ public class Account
     }
 
     /**
-     * The personal account, person middle name.
+     * The personal / sub account, person middle name.
      **/
     public Account middleName( String middleName )
     {
@@ -279,7 +258,7 @@ public class Account
     }
 
     /**
-     * The personal account, person last name.
+     * The personal / sub account, person last name.
      **/
     public Account lastName( String lastName )
     {
@@ -298,7 +277,7 @@ public class Account
     }
 
     /**
-     * The personal account, person name suffix.
+     * The personal / sub account, person name suffix.
      **/
     public Account suffix( String suffix )
     {
@@ -700,7 +679,6 @@ public class Account
     public String toString()
     {
         return "class Account {\n" +
-                "    id: " + toIndentedString( id ) + "\n" +
                 "    email: " + toIndentedString( email ) + "\n" +
                 "    identityId: " + toIndentedString( identityId ) + "\n" +
                 "    loginProvider: " + toIndentedString( loginProvider ) + "\n" +

@@ -19,7 +19,7 @@
 package biz.turnonline.ecosystem.accountManagement.model;
 
 /**
- * Model definition for AccountBillingContact.
+ * Model definition for SubAccount.
  * <p>
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the Account & Contact management. For a detailed
@@ -30,7 +30,7 @@ package biz.turnonline.ecosystem.accountManagement.model;
  * @author Google, Inc.
  */
 @SuppressWarnings( "javadoc" )
-public final class AccountBillingContact
+public final class SubAccount
         extends com.google.api.client.json.GenericJson
 {
 
@@ -56,19 +56,25 @@ public final class AccountBillingContact
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
+    private java.lang.String locale;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
     private java.lang.String middleName;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String phone;
+    private java.lang.String prefix;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String prefix;
+    private java.lang.String role;
 
     /**
      * The value may be {@code null}.
@@ -87,7 +93,7 @@ public final class AccountBillingContact
     /**
      * @param email email or {@code null} for none
      */
-    public AccountBillingContact setEmail( java.lang.String email )
+    public SubAccount setEmail( java.lang.String email )
     {
         this.email = email;
         return this;
@@ -104,7 +110,7 @@ public final class AccountBillingContact
     /**
      * @param firstName firstName or {@code null} for none
      */
-    public AccountBillingContact setFirstName( java.lang.String firstName )
+    public SubAccount setFirstName( java.lang.String firstName )
     {
         this.firstName = firstName;
         return this;
@@ -121,9 +127,26 @@ public final class AccountBillingContact
     /**
      * @param lastName lastName or {@code null} for none
      */
-    public AccountBillingContact setLastName( java.lang.String lastName )
+    public SubAccount setLastName( java.lang.String lastName )
     {
         this.lastName = lastName;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.String getLocale()
+    {
+        return locale;
+    }
+
+    /**
+     * @param locale locale or {@code null} for none
+     */
+    public SubAccount setLocale( java.lang.String locale )
+    {
+        this.locale = locale;
         return this;
     }
 
@@ -138,26 +161,9 @@ public final class AccountBillingContact
     /**
      * @param middleName middleName or {@code null} for none
      */
-    public AccountBillingContact setMiddleName( java.lang.String middleName )
+    public SubAccount setMiddleName( java.lang.String middleName )
     {
         this.middleName = middleName;
-        return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public java.lang.String getPhone()
-    {
-        return phone;
-    }
-
-    /**
-     * @param phone phone or {@code null} for none
-     */
-    public AccountBillingContact setPhone( java.lang.String phone )
-    {
-        this.phone = phone;
         return this;
     }
 
@@ -172,9 +178,26 @@ public final class AccountBillingContact
     /**
      * @param prefix prefix or {@code null} for none
      */
-    public AccountBillingContact setPrefix( java.lang.String prefix )
+    public SubAccount setPrefix( java.lang.String prefix )
     {
         this.prefix = prefix;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.String getRole()
+    {
+        return role;
+    }
+
+    /**
+     * @param role role or {@code null} for none
+     */
+    public SubAccount setRole( java.lang.String role )
+    {
+        this.role = role;
         return this;
     }
 
@@ -189,22 +212,22 @@ public final class AccountBillingContact
     /**
      * @param suffix suffix or {@code null} for none
      */
-    public AccountBillingContact setSuffix( java.lang.String suffix )
+    public SubAccount setSuffix( java.lang.String suffix )
     {
         this.suffix = suffix;
         return this;
     }
 
     @Override
-    public AccountBillingContact set( String fieldName, Object value )
+    public SubAccount set( String fieldName, Object value )
     {
-        return ( AccountBillingContact ) super.set( fieldName, value );
+        return ( SubAccount ) super.set( fieldName, value );
     }
 
     @Override
-    public AccountBillingContact clone()
+    public SubAccount clone()
     {
-        return ( AccountBillingContact ) super.clone();
+        return ( SubAccount ) super.clone();
     }
 
 }
