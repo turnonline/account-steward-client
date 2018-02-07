@@ -26,23 +26,20 @@ import biz.turnonline.ecosystem.accountManagement.model.ContactCard;
 import biz.turnonline.ecosystem.accountManagement.model.Country;
 import biz.turnonline.ecosystem.accountManagement.model.LegalForm;
 import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
 import com.google.inject.TypeLiteral;
-import ma.glasnost.orika.MapperFacade;
-import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.converter.ConverterFactory;
-import ma.glasnost.orika.impl.DefaultMapperFactory;
+import com.google.inject.multibindings.Multibinder;
 import org.ctoolkit.restapi.client.adaptee.DeleteExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.GetExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.InsertExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.NewExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.UpdateExecutorAdaptee;
-import org.ctoolkit.restapi.client.adapter.DateTimeToDateConverter;
 
 import javax.inject.Singleton;
 
 /**
+ * The account management guice default adaptee configuration.
+ *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class AccountManagementAdapterModule
@@ -118,31 +115,8 @@ public class AccountManagementAdapterModule
         bind( new TypeLiteral<ListExecutorAdaptee<LegalForm>>()
         {
         } ).to( LegalFormAdaptee.class );
-    }
 
-    @Provides
-    @Singleton
-    MapperFactory provideMapperFactory()
-    {
-        return new DefaultMapperFactory.Builder()
-                .dumpStateOnException( false )
-                .mapNulls( false )
-                .useBuiltinConverters( true )
-                .build();
-    }
-
-    @Provides
-    @Singleton
-    MapperFacade provideMapperFacade( MapperFactory factory )
-    {
-        ConverterFactory converterFactory = factory.getConverterFactory();
-        converterFactory.registerConverter( new DateTimeToDateConverter() );
-
-        factory.classMap( Account.class, biz.turnonline.ecosystem.account.client.model.Account.class ).byDefault().register();
-        factory.classMap( ContactCard.class, biz.turnonline.ecosystem.account.client.model.ContactCard.class ).byDefault().register();
-        factory.classMap( Country.class, biz.turnonline.ecosystem.account.client.model.Country.class ).byDefault().register();
-        factory.classMap( LegalForm.class, biz.turnonline.ecosystem.account.client.model.LegalForm.class ).byDefault().register();
-
-        return factory.getMapperFacade();
+        Multibinder<BeanMapperConfig> multibinder = Multibinder.newSetBinder( binder(), BeanMapperConfig.class );
+        multibinder.addBinding().to( AccountManagementMapperConfig.class ).in( Singleton.class );
     }
 }
