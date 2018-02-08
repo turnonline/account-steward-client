@@ -22,8 +22,6 @@ import biz.turnonline.ecosystem.accountManagement.model.ContactCard;
 import biz.turnonline.ecosystem.accountManagement.model.Country;
 import biz.turnonline.ecosystem.accountManagement.model.LegalForm;
 import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.converter.ConverterFactory;
-import org.ctoolkit.restapi.client.adapter.DateTimeToDateConverter;
 
 /**
  * The account management mapper configuration for orika.
@@ -36,9 +34,6 @@ public class AccountManagementMapperConfig
     @Override
     public void config( MapperFactory factory )
     {
-        ConverterFactory converterFactory = factory.getConverterFactory();
-        converterFactory.registerConverter( new DateTimeToDateConverter() );
-
         factory.classMap( Account.class, biz.turnonline.ecosystem.account.client.model.Account.class ).byDefault().register();
         factory.classMap( ContactCard.class, biz.turnonline.ecosystem.account.client.model.ContactCard.class ).byDefault().register();
         factory.classMap( Country.class, biz.turnonline.ecosystem.account.client.model.Country.class ).byDefault().register();
