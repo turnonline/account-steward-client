@@ -22,6 +22,7 @@ import biz.turnonline.ecosystem.accountManagement.model.ContactCard;
 import biz.turnonline.ecosystem.accountManagement.model.Country;
 import biz.turnonline.ecosystem.accountManagement.model.LegalForm;
 import ma.glasnost.orika.MapperFactory;
+import org.ctoolkit.restapi.client.adapter.BeanMapperConfig;
 
 /**
  * The account management mapper configuration for orika.
