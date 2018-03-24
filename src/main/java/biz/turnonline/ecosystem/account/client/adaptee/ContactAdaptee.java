@@ -17,8 +17,8 @@
 
 package biz.turnonline.ecosystem.account.client.adaptee;
 
-import biz.turnonline.ecosystem.accountManagement.AccountManagement;
-import biz.turnonline.ecosystem.accountManagement.model.ContactCard;
+import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.model.ContactCard;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
 import org.ctoolkit.restapi.client.adaptee.NewExecutorAdaptee;
@@ -33,17 +33,19 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * The {@link ContactCard} adaptee implementation.
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class ContactAdaptee
-        extends AbstractGoogleClientAdaptee<AccountManagement>
+        extends AbstractGoogleClientAdaptee<Steward>
         implements RestExecutorAdaptee<ContactCard>, NewExecutorAdaptee<ContactCard>
 {
     @Inject
-    public ContactAdaptee( AccountManagement client )
+    public ContactAdaptee( Steward client )
     {
         super( client );
     }
@@ -52,7 +54,7 @@ public class ContactAdaptee
     public Object prepareDelete( @Nonnull Identifier identifier )
             throws IOException
     {
-        return client().contacts().delete( identifier.getLong() );
+        return client().contacts().delete( identifier.getString(), identifier.child().getLong() );
     }
 
     @Override
@@ -68,7 +70,7 @@ public class ContactAdaptee
     public Object prepareGet( @Nonnull Identifier identifier )
             throws IOException
     {
-        return client().contacts().get( identifier.getLong() );
+        return client().contacts().get( identifier.getString(), identifier.child().getLong() );
     }
 
     @Override
@@ -86,7 +88,8 @@ public class ContactAdaptee
                                  @Nullable MediaProvider provider )
             throws IOException
     {
-        return client().contacts().insert( resource );
+        checkNotNull( parentKey, "Contact requires a login-email identification." );
+        return client().contacts().insert( parentKey.getString(), resource );
     }
 
     @Override
@@ -102,7 +105,8 @@ public class ContactAdaptee
     public Object prepareList( @Nullable Identifier parentKey )
             throws IOException
     {
-        return client().contacts().list();
+        checkNotNull( parentKey, "Contact requires a login-email identification." );
+        return client().contacts().list( parentKey.getString() );
     }
 
     @Override
@@ -115,7 +119,7 @@ public class ContactAdaptee
                                           @Nullable Boolean ascending )
             throws IOException
     {
-        AccountManagement.Contacts.List list = ( AccountManagement.Contacts.List ) request;
+        Steward.Contacts.List list = ( Steward.Contacts.List ) request;
         if ( start != null && start > 0 )
         {
             list.setStart( start );
@@ -151,7 +155,7 @@ public class ContactAdaptee
                                  @Nullable MediaProvider provider )
             throws IOException
     {
-        return client().contacts().update( identifier.getLong(), resource );
+        return client().contacts().update( identifier.getString(), identifier.child().getLong(), resource );
     }
 
     @Override

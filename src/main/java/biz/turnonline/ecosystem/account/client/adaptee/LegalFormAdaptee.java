@@ -17,8 +17,8 @@
 
 package biz.turnonline.ecosystem.account.client.adaptee;
 
-import biz.turnonline.ecosystem.accountManagement.AccountManagement;
-import biz.turnonline.ecosystem.accountManagement.model.LegalForm;
+import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.model.LegalForm;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
 import org.ctoolkit.restapi.client.adapter.AbstractGetExecutorAdaptee;
@@ -37,11 +37,11 @@ import java.util.Map;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class LegalFormAdaptee
-        extends AbstractGetExecutorAdaptee<AccountManagement, LegalForm>
+        extends AbstractGetExecutorAdaptee<Steward, LegalForm>
         implements ListExecutorAdaptee<LegalForm>
 {
     @Inject
-    public LegalFormAdaptee( AccountManagement client )
+    public LegalFormAdaptee( Steward client )
     {
         super( client );
     }
@@ -70,7 +70,7 @@ public class LegalFormAdaptee
                                         @Nullable Boolean ascending )
             throws IOException
     {
-        AccountManagement.Legalforms.List list = ( AccountManagement.Legalforms.List ) request;
+        Steward.Legalforms.List list = ( Steward.Legalforms.List ) request;
 
         fill( request, parameters );
         return list.execute().getItems();

@@ -17,8 +17,8 @@
 
 package biz.turnonline.ecosystem.account.client;
 
-import biz.turnonline.ecosystem.accountManagement.AccountManagement;
-import biz.turnonline.ecosystem.accountManagement.AccountManagementScopes;
+import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.StewardScopes;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpStatusCodes;
 import com.google.inject.AbstractModule;
@@ -41,12 +41,12 @@ import java.util.Set;
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
-public class AccountManagementApiModule
+public class AccountStewardApiModule
         extends AbstractModule
 {
     public static final String API_PREFIX = "account";
 
-    private static final Logger logger = LoggerFactory.getLogger( AccountManagementApiModule.class );
+    private static final Logger logger = LoggerFactory.getLogger( AccountStewardApiModule.class );
 
     private ApiToken<? extends HttpRequestInitializer> initialized;
 
@@ -57,16 +57,16 @@ public class AccountManagementApiModule
 
     @Provides
     @Singleton
-    AccountManagement provideAccountManagement( GoogleApiProxyFactory factory )
+    Steward provideAccountManagement( GoogleApiProxyFactory factory )
     {
-        Set<String> scopes = AccountManagementScopes.all();
-        AccountManagement.Builder builder;
+        Set<String> scopes = StewardScopes.all();
+        Steward.Builder builder;
 
         try
         {
             initialized = factory.authorize( scopes, null, API_PREFIX );
             HttpRequestInitializer credential = initialized.getCredential();
-            builder = new AccountManagement.Builder( factory.getHttpTransport(), factory.getJsonFactory(), credential );
+            builder = new Steward.Builder( factory.getHttpTransport(), factory.getJsonFactory(), credential );
             builder.setApplicationName( factory.getApplicationName( API_PREFIX ) );
         }
         catch ( GeneralSecurityException e )
@@ -90,7 +90,7 @@ public class AccountManagementApiModule
 
     @Provides
     @AccessToken( apiName = API_PREFIX )
-    ApiToken.Data provideAccountManagementTokenData( AccountManagement client )
+    ApiToken.Data provideAccountManagementTokenData( Steward client )
     {
         initialized.setServiceUrl( client.getBaseUrl() );
         return initialized.getTokenData();

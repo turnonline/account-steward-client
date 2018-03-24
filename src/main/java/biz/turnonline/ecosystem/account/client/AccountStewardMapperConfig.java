@@ -17,10 +17,10 @@
 
 package biz.turnonline.ecosystem.account.client;
 
-import biz.turnonline.ecosystem.accountManagement.model.Account;
-import biz.turnonline.ecosystem.accountManagement.model.ContactCard;
-import biz.turnonline.ecosystem.accountManagement.model.Country;
-import biz.turnonline.ecosystem.accountManagement.model.LegalForm;
+import biz.turnonline.ecosystem.steward.model.Account;
+import biz.turnonline.ecosystem.steward.model.ContactCard;
+import biz.turnonline.ecosystem.steward.model.Country;
+import biz.turnonline.ecosystem.steward.model.LegalForm;
 import ma.glasnost.orika.MapperFactory;
 import org.ctoolkit.restapi.client.adapter.BeanMapperConfig;
 
@@ -29,7 +29,7 @@ import org.ctoolkit.restapi.client.adapter.BeanMapperConfig;
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
-public class AccountManagementMapperConfig
+public class AccountStewardMapperConfig
         implements BeanMapperConfig
 {
     @Override

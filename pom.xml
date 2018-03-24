@@ -27,12 +27,12 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.turnonline.ecosystem</groupId>
-    <artifactId>turnonline-account-management-client</artifactId>
+    <artifactId>turnonline-account-steward-client</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Account &amp; Contact Management Java Client</name>
     <description>
-        Account and Contact Management service REST API Java Client
+        Account &amp; Contact Management service REST API Java Client
     </description>
 
     <dependencyManagement>

@@ -17,8 +17,8 @@
 
 package biz.turnonline.ecosystem.account.client.adaptee;
 
-import biz.turnonline.ecosystem.accountManagement.AccountManagement;
-import biz.turnonline.ecosystem.accountManagement.model.Country;
+import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.model.Country;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
 import org.ctoolkit.restapi.client.adapter.AbstractGetExecutorAdaptee;
@@ -37,11 +37,11 @@ import java.util.Map;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class CountryAdaptee
-        extends AbstractGetExecutorAdaptee<AccountManagement, Country>
+        extends AbstractGetExecutorAdaptee<Steward, Country>
         implements ListExecutorAdaptee<Country>
 {
     @Inject
-    public CountryAdaptee( AccountManagement client )
+    public CountryAdaptee( Steward client )
     {
         super( client );
     }
@@ -70,7 +70,7 @@ public class CountryAdaptee
                                       @Nullable Boolean ascending )
             throws IOException
     {
-        AccountManagement.Countries.List list = ( AccountManagement.Countries.List ) request;
+        Steward.Countries.List list = ( Steward.Countries.List ) request;
 
         fill( request, parameters );
         return list.execute().getItems();

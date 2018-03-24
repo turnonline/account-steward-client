@@ -1,2 +1,2 @@
-# turnonline-account-management-client
-The Account and Contact management REST API java client
+# turnonline-account-steward-client
+The Account & Contact management REST API java client

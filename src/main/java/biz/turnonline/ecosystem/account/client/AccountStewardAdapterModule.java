@@ -21,10 +21,10 @@ import biz.turnonline.ecosystem.account.client.adaptee.AccountAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.ContactAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.CountryAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.LegalFormAdaptee;
-import biz.turnonline.ecosystem.accountManagement.model.Account;
-import biz.turnonline.ecosystem.accountManagement.model.ContactCard;
-import biz.turnonline.ecosystem.accountManagement.model.Country;
-import biz.turnonline.ecosystem.accountManagement.model.LegalForm;
+import biz.turnonline.ecosystem.steward.model.Account;
+import biz.turnonline.ecosystem.steward.model.ContactCard;
+import biz.turnonline.ecosystem.steward.model.Country;
+import biz.turnonline.ecosystem.steward.model.LegalForm;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.Multibinder;
@@ -43,7 +43,7 @@ import javax.inject.Singleton;
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
-public class AccountManagementAdapterModule
+public class AccountStewardAdapterModule
         extends AbstractModule
 {
     @Override
@@ -118,6 +118,6 @@ public class AccountManagementAdapterModule
         } ).to( LegalFormAdaptee.class );
 
         Multibinder<BeanMapperConfig> multibinder = Multibinder.newSetBinder( binder(), BeanMapperConfig.class );
-        multibinder.addBinding().to( AccountManagementMapperConfig.class ).in( Singleton.class );
+        multibinder.addBinding().to( AccountStewardMapperConfig.class ).in( Singleton.class );
     }
 }
