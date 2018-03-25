@@ -18,60 +18,43 @@
 package biz.turnonline.ecosystem.account.client.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Error
+/**
+ * The domain resource URI list wrapper.
+ **/
+public class UriList
         implements Serializable
 {
-    private static final long serialVersionUID = -6511527402938052948L;
+    private static final long serialVersionUID = -2138443122395896304L;
 
-    private Integer code = null;
-
-    private String message = null;
+    private List<String> uris = new ArrayList<>();
 
     /**
-     * The HTTP status code
-     **/
-    public Error code( Integer code )
+     * The path of a domain URI. An optional slash “/” prefix will be ignored.
+     */
+    public UriList uris( List<String> uris )
     {
-        this.code = code;
+        this.uris = uris;
         return this;
     }
 
-    public Integer getCode()
+    public List<String> getUris()
     {
-        return code;
+        return uris;
     }
 
-    public void setCode( Integer code )
+    public void setUris( List<String> uris )
     {
-        this.code = code;
-    }
-
-    /**
-     * The error message
-     **/
-    public Error message( String message )
-    {
-        this.message = message;
-        return this;
-    }
-
-    public String getMessage()
-    {
-        return message;
-    }
-
-    public void setMessage( String message )
-    {
-        this.message = message;
+        this.uris = uris;
     }
 
     @Override
     public String toString()
     {
-        return "class Error {\n" +
-                "    code: " + toIndentedString( code ) + "\n" +
-                "    message: " + toIndentedString( message ) + "\n" +
+        return "class UriList {\n" +
+                "    uris: " + toIndentedString( uris ) + "\n" +
                 "}";
     }
 

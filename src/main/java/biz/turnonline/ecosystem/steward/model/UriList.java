@@ -19,7 +19,7 @@
 package biz.turnonline.ecosystem.steward.model;
 
 /**
- * Model definition for LegalFormCollection.
+ * Model definition for UriList.
  * <p>
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the TurnOnline.biz Account & Contact management. For a
@@ -30,50 +30,43 @@ package biz.turnonline.ecosystem.steward.model;
  * @author Google, Inc.
  */
 @SuppressWarnings( "javadoc" )
-public final class LegalFormCollection
+public final class UriList
         extends com.google.api.client.json.GenericJson
 {
-
-    static
-    {
-        // hack to force ProGuard to consider LegalForm used, since otherwise it would be stripped out
-        // see https://github.com/google/google-api-java-client/issues/543
-        com.google.api.client.util.Data.nullOf( LegalForm.class );
-    }
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.util.List<LegalForm> items;
+    private java.util.List<java.lang.String> uris;
 
     /**
      * @return value or {@code null} for none
      */
-    public java.util.List<LegalForm> getItems()
+    public java.util.List<java.lang.String> getUris()
     {
-        return items;
+        return uris;
     }
 
     /**
-     * @param items items or {@code null} for none
+     * @param uris uris or {@code null} for none
      */
-    public LegalFormCollection setItems( java.util.List<LegalForm> items )
+    public UriList setUris( java.util.List<java.lang.String> uris )
     {
-        this.items = items;
+        this.uris = uris;
         return this;
     }
 
     @Override
-    public LegalFormCollection set( String fieldName, Object value )
+    public UriList set( String fieldName, Object value )
     {
-        return ( LegalFormCollection ) super.set( fieldName, value );
+        return ( UriList ) super.set( fieldName, value );
     }
 
     @Override
-    public LegalFormCollection clone()
+    public UriList clone()
     {
-        return ( LegalFormCollection ) super.clone();
+        return ( UriList ) super.clone();
     }
 
 }

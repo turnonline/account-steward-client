@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Comvai, s.r.o.
+ * Copyright (c) 2018 Comvai, s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,17 @@ package biz.turnonline.ecosystem.account.client;
 import biz.turnonline.ecosystem.account.client.adaptee.AccountAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.ContactAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.CountryAdaptee;
+import biz.turnonline.ecosystem.account.client.adaptee.DomainAdaptee;
+import biz.turnonline.ecosystem.account.client.adaptee.DomainUriAdaptee;
+import biz.turnonline.ecosystem.account.client.adaptee.InvoicingAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.LegalFormAdaptee;
 import biz.turnonline.ecosystem.steward.model.Account;
 import biz.turnonline.ecosystem.steward.model.ContactCard;
 import biz.turnonline.ecosystem.steward.model.Country;
+import biz.turnonline.ecosystem.steward.model.Domain;
+import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import biz.turnonline.ecosystem.steward.model.LegalForm;
+import biz.turnonline.ecosystem.steward.model.UriList;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.Multibinder;
@@ -73,6 +79,40 @@ public class AccountStewardAdapterModule
         bind( new TypeLiteral<NewExecutorAdaptee<Account>>()
         {
         } ).to( AccountAdaptee.class );
+
+        // invoicing config adaptee
+        bind( new TypeLiteral<GetExecutorAdaptee<InvoicingConfig>>()
+        {
+        } ).to( InvoicingAdaptee.class );
+
+        bind( new TypeLiteral<UpdateExecutorAdaptee<InvoicingConfig>>()
+        {
+        } ).to( InvoicingAdaptee.class );
+
+        bind( new TypeLiteral<DeleteExecutorAdaptee<InvoicingConfig>>()
+        {
+        } ).to( InvoicingAdaptee.class );
+
+        // Domain adaptee
+        bind( new TypeLiteral<InsertExecutorAdaptee<Domain>>()
+        {
+        } ).to( DomainAdaptee.class );
+
+        bind( new TypeLiteral<GetExecutorAdaptee<Domain>>()
+        {
+        } ).to( DomainAdaptee.class );
+
+        bind( new TypeLiteral<ListExecutorAdaptee<Domain>>()
+        {
+        } ).to( DomainAdaptee.class );
+
+        bind( new TypeLiteral<DeleteExecutorAdaptee<Domain>>()
+        {
+        } ).to( DomainAdaptee.class );
+
+        bind( new TypeLiteral<InsertExecutorAdaptee<UriList>>()
+        {
+        } ).to( DomainUriAdaptee.class );
 
         // ContactCard adaptee
         bind( new TypeLiteral<GetExecutorAdaptee<ContactCard>>()

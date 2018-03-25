@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Comvai, s.r.o.
+ * Copyright (c) 2018 Comvai, s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@ package biz.turnonline.ecosystem.account.client.model;
 
 import java.io.Serializable;
 
-public class AccountBillingContact
+public class InvoicingConfigBillingContact
         implements Serializable
 {
-    private static final long serialVersionUID = -8775386738770249393L;
+    private static final long serialVersionUID = 7997256007405427518L;
 
     private String email = null;
 
@@ -41,7 +41,7 @@ public class AccountBillingContact
     /**
      * The billing contact email.
      **/
-    public AccountBillingContact email( String email )
+    public InvoicingConfigBillingContact email( String email )
     {
         this.email = email;
         return this;
@@ -60,7 +60,7 @@ public class AccountBillingContact
     /**
      * The billing contact, name prefix.
      **/
-    public AccountBillingContact prefix( String prefix )
+    public InvoicingConfigBillingContact prefix( String prefix )
     {
         this.prefix = prefix;
         return this;
@@ -79,7 +79,7 @@ public class AccountBillingContact
     /**
      * The billing contact, first name.
      **/
-    public AccountBillingContact firstName( String firstName )
+    public InvoicingConfigBillingContact firstName( String firstName )
     {
         this.firstName = firstName;
         return this;
@@ -98,7 +98,7 @@ public class AccountBillingContact
     /**
      * The billing contact, middle name.
      **/
-    public AccountBillingContact middleName( String middleName )
+    public InvoicingConfigBillingContact middleName( String middleName )
     {
         this.middleName = middleName;
         return this;
@@ -117,7 +117,7 @@ public class AccountBillingContact
     /**
      * The billing contact, last name.
      **/
-    public AccountBillingContact lastName( String lastName )
+    public InvoicingConfigBillingContact lastName( String lastName )
     {
         this.lastName = lastName;
         return this;
@@ -136,7 +136,7 @@ public class AccountBillingContact
     /**
      * The billing contact, name suffix.
      **/
-    public AccountBillingContact suffix( String suffix )
+    public InvoicingConfigBillingContact suffix( String suffix )
     {
         this.suffix = suffix;
         return this;
@@ -155,7 +155,7 @@ public class AccountBillingContact
     /**
      * The billing contact, phone number.
      **/
-    public AccountBillingContact phone( String phone )
+    public InvoicingConfigBillingContact phone( String phone )
     {
         this.phone = phone;
         return this;
@@ -174,7 +174,7 @@ public class AccountBillingContact
     @Override
     public String toString()
     {
-        return "class AccountBillingContact {\n" +
+        return "class InvoicingConfigBillingContact {\n" +
                 "    email: " + toIndentedString( email ) + "\n" +
                 "    prefix: " + toIndentedString( prefix ) + "\n" +
                 "    firstName: " + toIndentedString( firstName ) + "\n" +

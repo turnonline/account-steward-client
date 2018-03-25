@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Comvai, s.r.o.
+ * Copyright (c) 2018 Comvai, s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  */
 
 /**
- * This is the API model generated from https://studio.restlet.com (Account & Contact management API)
+ * This is the API model generated from https://studio.restlet.com (Account & Contact management)
  * <p>
  * <strong>Java model</strong>
  * <p>

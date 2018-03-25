@@ -19,7 +19,7 @@
 package biz.turnonline.ecosystem.steward.model;
 
 /**
- * Model definition for LegalFormCollection.
+ * Model definition for DomainCollection.
  * <p>
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the TurnOnline.biz Account & Contact management. For a
@@ -30,27 +30,20 @@ package biz.turnonline.ecosystem.steward.model;
  * @author Google, Inc.
  */
 @SuppressWarnings( "javadoc" )
-public final class LegalFormCollection
+public final class DomainCollection
         extends com.google.api.client.json.GenericJson
 {
-
-    static
-    {
-        // hack to force ProGuard to consider LegalForm used, since otherwise it would be stripped out
-        // see https://github.com/google/google-api-java-client/issues/543
-        com.google.api.client.util.Data.nullOf( LegalForm.class );
-    }
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.util.List<LegalForm> items;
+    private java.util.List<Domain> items;
 
     /**
      * @return value or {@code null} for none
      */
-    public java.util.List<LegalForm> getItems()
+    public java.util.List<Domain> getItems()
     {
         return items;
     }
@@ -58,22 +51,22 @@ public final class LegalFormCollection
     /**
      * @param items items or {@code null} for none
      */
-    public LegalFormCollection setItems( java.util.List<LegalForm> items )
+    public DomainCollection setItems( java.util.List<Domain> items )
     {
         this.items = items;
         return this;
     }
 
     @Override
-    public LegalFormCollection set( String fieldName, Object value )
+    public DomainCollection set( String fieldName, Object value )
     {
-        return ( LegalFormCollection ) super.set( fieldName, value );
+        return ( DomainCollection ) super.set( fieldName, value );
     }
 
     @Override
-    public LegalFormCollection clone()
+    public DomainCollection clone()
     {
-        return ( LegalFormCollection ) super.clone();
+        return ( DomainCollection ) super.clone();
     }
 
 }

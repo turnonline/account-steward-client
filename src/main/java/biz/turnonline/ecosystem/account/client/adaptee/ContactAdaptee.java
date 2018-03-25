@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Comvai, s.r.o.
+ * Copyright (c) 2018 Comvai, s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,7 +88,7 @@ public class ContactAdaptee
                                  @Nullable MediaProvider provider )
             throws IOException
     {
-        checkNotNull( parentKey, "Contact requires a login-email identification." );
+        checkNotNull( parentKey, "Contact requires a login_email identification." );
         return client().contacts().insert( parentKey.getString(), resource );
     }
 
@@ -105,7 +105,7 @@ public class ContactAdaptee
     public Object prepareList( @Nullable Identifier parentKey )
             throws IOException
     {
-        checkNotNull( parentKey, "Contact requires a login-email identification." );
+        checkNotNull( parentKey, "Contact requires a login_email identification." );
         return client().contacts().list( parentKey.getString() );
     }
 

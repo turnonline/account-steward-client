@@ -19,7 +19,7 @@
 package biz.turnonline.ecosystem.steward.model;
 
 /**
- * Model definition for InvoicingConfig.
+ * Model definition for Domain.
  * <p>
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the TurnOnline.biz Account & Contact management. For a
@@ -30,7 +30,7 @@ package biz.turnonline.ecosystem.steward.model;
  * @author Google, Inc.
  */
 @SuppressWarnings( "javadoc" )
-public final class InvoicingConfig
+public final class Domain
         extends com.google.api.client.json.GenericJson
 {
 
@@ -38,104 +38,127 @@ public final class InvoicingConfig
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private InvoicingConfigBillingAddress billingAddress;
+    private java.lang.String domain;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private InvoicingConfigBillingContact billingContact;
+    private java.lang.String name;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String currency;
+    private java.lang.String subdomain;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.Boolean hasBillingAddress;
+    private java.lang.String uri;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private java.lang.String url;
 
     /**
      * @return value or {@code null} for none
      */
-    public InvoicingConfigBillingAddress getBillingAddress()
+    public java.lang.String getDomain()
     {
-        return billingAddress;
+        return domain;
     }
 
     /**
-     * @param billingAddress billingAddress or {@code null} for none
+     * @param domain domain or {@code null} for none
      */
-    public InvoicingConfig setBillingAddress( InvoicingConfigBillingAddress billingAddress )
+    public Domain setDomain( java.lang.String domain )
     {
-        this.billingAddress = billingAddress;
+        this.domain = domain;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public InvoicingConfigBillingContact getBillingContact()
+    public java.lang.String getName()
     {
-        return billingContact;
+        return name;
     }
 
     /**
-     * @param billingContact billingContact or {@code null} for none
+     * @param name name or {@code null} for none
      */
-    public InvoicingConfig setBillingContact( InvoicingConfigBillingContact billingContact )
+    public Domain setName( java.lang.String name )
     {
-        this.billingContact = billingContact;
+        this.name = name;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getCurrency()
+    public java.lang.String getSubdomain()
     {
-        return currency;
+        return subdomain;
     }
 
     /**
-     * @param currency currency or {@code null} for none
+     * @param subdomain subdomain or {@code null} for none
      */
-    public InvoicingConfig setCurrency( java.lang.String currency )
+    public Domain setSubdomain( java.lang.String subdomain )
     {
-        this.currency = currency;
+        this.subdomain = subdomain;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.Boolean getHasBillingAddress()
+    public java.lang.String getUri()
     {
-        return hasBillingAddress;
+        return uri;
     }
 
     /**
-     * @param hasBillingAddress hasBillingAddress or {@code null} for none
+     * @param uri uri or {@code null} for none
      */
-    public InvoicingConfig setHasBillingAddress( java.lang.Boolean hasBillingAddress )
+    public Domain setUri( java.lang.String uri )
     {
-        this.hasBillingAddress = hasBillingAddress;
+        this.uri = uri;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.String getUrl()
+    {
+        return url;
+    }
+
+    /**
+     * @param url url or {@code null} for none
+     */
+    public Domain setUrl( java.lang.String url )
+    {
+        this.url = url;
         return this;
     }
 
     @Override
-    public InvoicingConfig set( String fieldName, Object value )
+    public Domain set( String fieldName, Object value )
     {
-        return ( InvoicingConfig ) super.set( fieldName, value );
+        return ( Domain ) super.set( fieldName, value );
     }
 
     @Override
-    public InvoicingConfig clone()
+    public Domain clone()
     {
-        return ( InvoicingConfig ) super.clone();
+        return ( Domain ) super.clone();
     }
 
 }

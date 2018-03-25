@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Comvai, s.r.o.
+ * Copyright (c) 2018 Comvai, s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,10 @@ package biz.turnonline.ecosystem.account.client;
 import biz.turnonline.ecosystem.steward.model.Account;
 import biz.turnonline.ecosystem.steward.model.ContactCard;
 import biz.turnonline.ecosystem.steward.model.Country;
+import biz.turnonline.ecosystem.steward.model.Domain;
+import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import biz.turnonline.ecosystem.steward.model.LegalForm;
+import biz.turnonline.ecosystem.steward.model.UriList;
 import ma.glasnost.orika.MapperFactory;
 import org.ctoolkit.restapi.client.adapter.BeanMapperConfig;
 
@@ -36,6 +39,9 @@ public class AccountStewardMapperConfig
     public void config( MapperFactory factory )
     {
         factory.classMap( Account.class, biz.turnonline.ecosystem.account.client.model.Account.class ).byDefault().register();
+        factory.classMap( InvoicingConfig.class, biz.turnonline.ecosystem.account.client.model.InvoicingConfig.class ).byDefault().register();
+        factory.classMap( Domain.class, biz.turnonline.ecosystem.account.client.model.Domain.class ).byDefault().register();
+        factory.classMap( UriList.class, biz.turnonline.ecosystem.account.client.model.UriList.class ).byDefault().register();
         factory.classMap( ContactCard.class, biz.turnonline.ecosystem.account.client.model.ContactCard.class ).byDefault().register();
         factory.classMap( Country.class, biz.turnonline.ecosystem.account.client.model.Country.class ).byDefault().register();
         factory.classMap( LegalForm.class, biz.turnonline.ecosystem.account.client.model.LegalForm.class ).byDefault().register();
