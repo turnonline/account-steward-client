@@ -30,7 +30,7 @@ import biz.turnonline.ecosystem.steward.model.Country;
 import biz.turnonline.ecosystem.steward.model.Domain;
 import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import biz.turnonline.ecosystem.steward.model.LegalForm;
-import biz.turnonline.ecosystem.steward.model.UriList;
+import biz.turnonline.ecosystem.steward.model.Uri;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.Multibinder;
@@ -110,7 +110,7 @@ public class AccountStewardAdapterModule
         {
         } ).to( DomainAdaptee.class );
 
-        bind( new TypeLiteral<InsertExecutorAdaptee<UriList>>()
+        bind( new TypeLiteral<InsertExecutorAdaptee<Uri>>()
         {
         } ).to( DomainUriAdaptee.class );
 

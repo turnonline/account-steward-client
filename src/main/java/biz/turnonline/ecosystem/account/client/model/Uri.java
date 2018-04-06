@@ -18,43 +18,41 @@
 package biz.turnonline.ecosystem.account.client.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * The domain resource URI list wrapper.
+ * The domain resource URI wrapper.
  **/
-public class UriList
+public class Uri
         implements Serializable
 {
-    private static final long serialVersionUID = -2138443122395896304L;
 
-    private List<String> uris = new ArrayList<>();
+    private String uri = null;
 
     /**
      * The path of a domain URI. An optional slash “/” prefix will be ignored.
-     */
-    public UriList uris( List<String> uris )
+     **/
+    public Uri uri( String uri )
     {
-        this.uris = uris;
+        this.uri = uri;
         return this;
     }
 
-    public List<String> getUris()
+
+    public String getUri()
     {
-        return uris;
+        return uri;
     }
 
-    public void setUris( List<String> uris )
+    public void setUri( String uri )
     {
-        this.uris = uris;
+        this.uri = uri;
     }
 
     @Override
     public String toString()
     {
-        return "class UriList {\n" +
-                "    uris: " + toIndentedString( uris ) + "\n" +
+        return "class Uri {\n" +
+                "    uri: " + toIndentedString( uri ) + "\n" +
                 "}";
     }
 

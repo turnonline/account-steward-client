@@ -18,7 +18,7 @@
 package biz.turnonline.ecosystem.account.client.adaptee;
 
 import biz.turnonline.ecosystem.steward.Steward;
-import biz.turnonline.ecosystem.steward.model.UriList;
+import biz.turnonline.ecosystem.steward.model.Uri;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
 import org.ctoolkit.restapi.client.adapter.AbstractInsertExecutorAdaptee;
@@ -31,7 +31,7 @@ import java.io.IOException;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The {@link UriList} adaptee implementation.
+ * The {@link Uri} adaptee implementation.
  * Supported operations:
  * <ul>
  * <li>Insert (POST)</li>
@@ -40,7 +40,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class DomainUriAdaptee
-        extends AbstractInsertExecutorAdaptee<Steward, UriList>
+        extends AbstractInsertExecutorAdaptee<Steward, Uri>
 {
     @Inject
     public DomainUriAdaptee( Steward client )
@@ -49,7 +49,7 @@ public class DomainUriAdaptee
     }
 
     @Override
-    public Object prepareInsert( @Nonnull UriList resource,
+    public Object prepareInsert( @Nonnull Uri resource,
                                  @Nullable Identifier id,
                                  @Nullable MediaProvider provider ) throws IOException
     {

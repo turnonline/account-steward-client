@@ -18,9 +18,10 @@
 package biz.turnonline.ecosystem.account.client.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
- * The domain as a representation where a certain product will be publicly available. As a first step a validated (ownership) domain must be created, a resource only with \&quot;domain\&quot; property + optionally with sub-domain.
+ * The domain as a representation where a certain product will be publicly available. As a first step a validated (ownership) domain must be created (naked domain).  **There are 3 types of domains:** * NAKED - only the client defined property “domain” has a value as a composition of the domain and TLD. * SUBDOMAIN - additonally “subdomain” is being defined along side with “domain” property. * PRODUCT - these client defined properties “domain”, “subdomain”, and “uri” represents a certain product that is publicly available as a web site.
  **/
 public class Domain
         implements Serializable
@@ -57,7 +58,7 @@ public class Domain
     }
 
     /**
-     * The domain name unique across the globe. As composition of the domain and TLD.
+     * The domain name unique across the globe. As composition of the domain and TLD. It will always be saved in lowercase letters. In case the domain property is being provided together with subdomain, only the naked domain part will be accepted for this property.
      **/
     public Domain domain( String domain )
     {
@@ -76,7 +77,7 @@ public class Domain
     }
 
     /**
-     * The optional subdomain. If missing this domain represents a naked domain.
+     * The optional subdomain. If missing this Domain represents a naked domain. It will always be saved in lowercase letters.
      **/
     public Domain subdomain( String subdomain )
     {
@@ -95,7 +96,7 @@ public class Domain
     }
 
     /**
-     * The optional path of a product (slash \"/\" prefix will be ignored).
+     * The optional path of a product (slash \"/\" prefix will be ignored). It will always be saved in lowercase letters.
      **/
     public Domain uri( String uri )
     {
@@ -130,6 +131,28 @@ public class Domain
     public void setUrl( String url )
     {
         this.url = url;
+    }
+
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o )
+        {
+            return true;
+        }
+        if ( o == null || getClass() != o.getClass() )
+        {
+            return false;
+        }
+        Domain domain = ( Domain ) o;
+        return Objects.equals( name, domain.name );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( name );
     }
 
     @Override
