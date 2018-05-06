@@ -25,6 +25,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The enumeration as a list of supported domicile.
+ * Domicile as country of residence of the company, ISO 3166 alpha-2 country code.
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
