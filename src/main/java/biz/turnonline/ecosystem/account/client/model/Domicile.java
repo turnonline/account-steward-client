@@ -25,7 +25,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * The enumeration as a list of supported domicile.
- * Domicile as country of residence of the company, ISO 3166 alpha-2 country code.
+ * Domicile as a country of company residence, Enum based on ISO 3166 alpha-2 country code.
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
@@ -63,7 +63,7 @@ public enum Domicile
     }
 
     /**
-     * Returns domicile default currency alphabetic code
+     * Returns domicile default currency alphabetic code based on the ISO 4217
      *
      * @return the domicile default currency alphabetic code
      */
