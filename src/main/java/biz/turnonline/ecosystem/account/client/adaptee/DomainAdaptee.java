@@ -116,19 +116,19 @@ public class DomainAdaptee
     public List<Domain> executeList( @Nonnull Object request,
                                      @Nullable Map<String, Object> parameters,
                                      @Nullable Locale locale,
-                                     @Nullable Integer start,
-                                     @Nullable Integer length,
+                                     @Nullable Integer offset,
+                                     @Nullable Integer limit,
                                      @Nullable String orderBy,
                                      @Nullable Boolean ascending ) throws IOException
     {
         Steward.Domains.List list = ( Steward.Domains.List ) request;
-        if ( start != null && start > 0 )
+        if ( offset != null && offset > 0 )
         {
-            list.setStart( start );
+            list.setOffset( offset );
         }
-        if ( length != null && length > 0 )
+        if ( limit != null && limit > 0 )
         {
-            list.setLength( length );
+            list.setLimit( limit );
         }
 
         fill( request, parameters );
