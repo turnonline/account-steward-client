@@ -22,7 +22,7 @@ import java.io.Serializable;
 public class AccountBusiness
         implements Serializable
 {
-    private static final long serialVersionUID = -2245679322041953740L;
+    private static final long serialVersionUID = -1091559499417565826L;
 
     private String businessName = null;
 
@@ -47,6 +47,8 @@ public class AccountBusiness
     private Boolean vatPayer = false;
 
     private String vatId = null;
+
+    private String domain = null;
 
     /**
      * The company business name.
@@ -125,7 +127,8 @@ public class AccountBusiness
     }
 
     /**
-     * The country of residence of the company, ISO 3166 alpha-2 country code. It's case insensitive. Technically it's same as country but the supported list is limited.
+     * The country of residence of the company, ISO 3166 alpha-2 country code. It's case insensitive.
+     * Technically it's same as country but the supported list is limited.
      **/
     public AccountBusiness domicile( String domicile )
     {
@@ -239,7 +242,8 @@ public class AccountBusiness
     }
 
     /**
-     * The boolean indication whether company is registered as VAT payer. The missing value or false means company it's not a VAT payer.
+     * The boolean indication whether company is registered as VAT payer.
+     * The missing value or false means company it's not a VAT payer.
      **/
     public AccountBusiness vatPayer( Boolean vatPayer )
     {
@@ -276,6 +280,26 @@ public class AccountBusiness
         this.vatId = vatId;
     }
 
+    /**
+     * The account default domain name, the name that represents an unique domain specification.
+     * It might be selected only from existing list of domains, otherwise validation error will be thrown.
+     **/
+    public AccountBusiness domain( String domain )
+    {
+        this.domain = domain;
+        return this;
+    }
+
+    public String getDomain()
+    {
+        return domain;
+    }
+
+    public void setDomain( String domain )
+    {
+        this.domain = domain;
+    }
+
     @Override
     public String toString()
     {
@@ -292,6 +316,7 @@ public class AccountBusiness
                 "    taxId: " + toIndentedString( taxId ) + "\n" +
                 "    vatPayer: " + toIndentedString( vatPayer ) + "\n" +
                 "    vatId: " + toIndentedString( vatId ) + "\n" +
+                "    domain: " + toIndentedString( domain ) + "\n" +
                 "}";
     }
 

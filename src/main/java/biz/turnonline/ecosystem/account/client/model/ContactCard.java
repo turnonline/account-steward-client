@@ -31,6 +31,10 @@ public class ContactCard
 
     private String contactEmail = null;
 
+    private String contactPhone = null;
+
+    private String locale = null;
+
     private String prefix = null;
 
     private String firstName = null;
@@ -66,6 +70,8 @@ public class ContactCard
     private String vatId = null;
 
     private Boolean vatPayer = false;
+
+    private Boolean newsletter;
 
     /**
      * The contact unique identification.
@@ -103,6 +109,45 @@ public class ContactCard
     public void setContactEmail( String contactEmail )
     {
         this.contactEmail = contactEmail;
+    }
+
+    /**
+     * The contact phone number used for dealing with potential issues with an order.
+     **/
+    public ContactCard contactPhone( String contactPhone )
+    {
+        this.contactPhone = contactPhone;
+        return this;
+    }
+
+    public String getContactPhone()
+    {
+        return contactPhone;
+    }
+
+    public void setContactPhone( String contactPhone )
+    {
+        this.contactPhone = contactPhone;
+    }
+
+    /**
+     * The preferred language of the issued invoice. If supported, the value will override the seller's account
+     * default language. ISO 639 alpha-2 or alpha-3 language code.
+     **/
+    public ContactCard locale( String locale )
+    {
+        this.locale = locale;
+        return this;
+    }
+
+    public String getLocale()
+    {
+        return locale;
+    }
+
+    public void setLocale( String locale )
+    {
+        this.locale = locale;
     }
 
     /**
@@ -334,7 +379,8 @@ public class ContactCard
     }
 
     /**
-     * The boolean indication whether contact represents a business entity. The missing value or false means it represents a personal contact (not business entity).
+     * The boolean indication whether contact represents a business entity. The missing value or false means
+     * it represents a personal contact (not business entity).
      **/
     public ContactCard company( Boolean company )
     {
@@ -429,7 +475,8 @@ public class ContactCard
     }
 
     /**
-     * The boolean indication whether company is registered as VAT payer. The missing value or false means company it's not a VAT payer.
+     * The boolean indication whether company is registered as VAT payer.
+     * The missing value or false means company it's not a VAT payer.
      **/
     public ContactCard vatPayer( Boolean vatPayer )
     {
@@ -447,12 +494,33 @@ public class ContactCard
         this.vatPayer = vatPayer;
     }
 
+    /**
+     * The indication whether this contact has given a consent to be subscribed to the seller's newsletter.
+     **/
+    public ContactCard newsletter( Boolean newsletter )
+    {
+        this.newsletter = newsletter;
+        return this;
+    }
+
+    public Boolean getNewsletter()
+    {
+        return newsletter;
+    }
+
+    public void setNewsletter( Boolean newsletter )
+    {
+        this.newsletter = newsletter;
+    }
+
     @Override
     public String toString()
     {
         return "class ContactCard {\n" +
                 "    id: " + toIndentedString( id ) + "\n" +
                 "    contactEmail: " + toIndentedString( contactEmail ) + "\n" +
+                "    contactPhone: " + toIndentedString( contactPhone ) + "\n" +
+                "    locale: " + toIndentedString( locale ) + "\n" +
                 "    prefix: " + toIndentedString( prefix ) + "\n" +
                 "    firstName: " + toIndentedString( firstName ) + "\n" +
                 "    lastName: " + toIndentedString( lastName ) + "\n" +
@@ -471,6 +539,7 @@ public class ContactCard
                 "    taxId: " + toIndentedString( taxId ) + "\n" +
                 "    vatId: " + toIndentedString( vatId ) + "\n" +
                 "    vatPayer: " + toIndentedString( vatPayer ) + "\n" +
+                "    newsletter: " + toIndentedString( newsletter ) + "\n" +
                 "}";
     }
 
