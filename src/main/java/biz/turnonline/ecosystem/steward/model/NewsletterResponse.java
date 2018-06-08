@@ -19,7 +19,7 @@
 package biz.turnonline.ecosystem.steward.model;
 
 /**
- * Model definition for ContactCardCollection.
+ * Model definition for NewsletterResponse.
  *
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the TurnOnline.biz Account & Contact management. For a
@@ -30,50 +30,43 @@ package biz.turnonline.ecosystem.steward.model;
  * @author Google, Inc.
  */
 @SuppressWarnings( "javadoc" )
-public final class ContactCardCollection
+public final class NewsletterResponse
         extends com.google.api.client.json.GenericJson
 {
-
-    static
-    {
-        // hack to force ProGuard to consider ContactCard used, since otherwise it would be stripped out
-        // see https://github.com/google/google-api-java-client/issues/543
-        com.google.api.client.util.Data.nullOf( ContactCard.class );
-    }
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.util.List<ContactCard> items;
+    private java.lang.Boolean successful;
 
     /**
      * @return value or {@code null} for none
      */
-    public java.util.List<ContactCard> getItems()
+    public java.lang.Boolean getSuccessful()
     {
-        return items;
+        return successful;
     }
 
     /**
-     * @param items items or {@code null} for none
+     * @param successful successful or {@code null} for none
      */
-    public ContactCardCollection setItems( java.util.List<ContactCard> items )
+    public NewsletterResponse setSuccessful( java.lang.Boolean successful )
     {
-        this.items = items;
+        this.successful = successful;
         return this;
     }
 
     @Override
-    public ContactCardCollection set( String fieldName, Object value )
+    public NewsletterResponse set( String fieldName, Object value )
     {
-        return ( ContactCardCollection ) super.set( fieldName, value );
+        return ( NewsletterResponse ) super.set( fieldName, value );
     }
 
     @Override
-    public ContactCardCollection clone()
+    public NewsletterResponse clone()
     {
-        return ( ContactCardCollection ) super.clone();
+        return ( NewsletterResponse ) super.clone();
     }
 
 }

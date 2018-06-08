@@ -54,7 +54,20 @@ public class ContactAdaptee
     public Object prepareDelete( @Nonnull Identifier identifier )
             throws IOException
     {
-        return client().contacts().delete( identifier.getString(), identifier.child().getLong() );
+        Identifier child = identifier.child();
+        String contactId;
+
+        // contact identification might be either Long ID or String contact email
+        if ( child.isLong() )
+        {
+            contactId = String.valueOf( child.getLong() );
+        }
+        else
+        {
+            contactId = child.getString();
+        }
+
+        return client().contacts().delete( identifier.getString(), contactId );
     }
 
     @Override
@@ -70,7 +83,20 @@ public class ContactAdaptee
     public Object prepareGet( @Nonnull Identifier identifier )
             throws IOException
     {
-        return client().contacts().get( identifier.getString(), identifier.child().getLong() );
+        Identifier child = identifier.child();
+        String contactId;
+
+        // contact identification might be either Long ID or String contact email
+        if ( child.isLong() )
+        {
+            contactId = String.valueOf( child.getLong() );
+        }
+        else
+        {
+            contactId = child.getString();
+        }
+
+        return client().contacts().get( identifier.getString(), contactId );
     }
 
     @Override
@@ -135,7 +161,6 @@ public class ContactAdaptee
 
     @Override
     public Object prepareNew( @Nullable String type )
-            throws IOException
     {
         return null;
     }
@@ -144,7 +169,6 @@ public class ContactAdaptee
     public ContactCard executeNew( @Nonnull Object request,
                                    @Nullable Map<String, Object> parameters,
                                    @Nullable Locale locale )
-            throws IOException
     {
         return null;
     }
@@ -155,7 +179,20 @@ public class ContactAdaptee
                                  @Nullable MediaProvider provider )
             throws IOException
     {
-        return client().contacts().update( identifier.getString(), identifier.child().getLong(), resource );
+        Identifier child = identifier.child();
+        String contactId;
+
+        // contact identification might be either Long ID or String contact email
+        if ( child.isLong() )
+        {
+            contactId = String.valueOf( child.getLong() );
+        }
+        else
+        {
+            contactId = child.getString();
+        }
+
+        return client().contacts().update( identifier.getString(), contactId, resource );
     }
 
     @Override

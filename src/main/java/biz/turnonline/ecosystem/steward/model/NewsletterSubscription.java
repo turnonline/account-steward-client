@@ -19,7 +19,7 @@
 package biz.turnonline.ecosystem.steward.model;
 
 /**
- * Model definition for Country.
+ * Model definition for NewsletterSubscription.
  *
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the TurnOnline.biz Account & Contact management. For a
@@ -30,7 +30,7 @@ package biz.turnonline.ecosystem.steward.model;
  * @author Google, Inc.
  */
 @SuppressWarnings( "javadoc" )
-public final class Country
+public final class NewsletterSubscription
         extends com.google.api.client.json.GenericJson
 {
 
@@ -44,19 +44,13 @@ public final class Country
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String label;
+    private com.google.api.client.util.DateTime modification;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String locale;
-
-    /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
-    private java.lang.Integer version;
+    private java.lang.Boolean subscribe;
 
     /**
      * @return value or {@code null} for none
@@ -69,7 +63,7 @@ public final class Country
     /**
      * @param code code or {@code null} for none
      */
-    public Country setCode( java.lang.String code )
+    public NewsletterSubscription setCode( java.lang.String code )
     {
         this.code = code;
         return this;
@@ -78,64 +72,47 @@ public final class Country
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getLabel()
+    public com.google.api.client.util.DateTime getModification()
     {
-        return label;
+        return modification;
     }
 
     /**
-     * @param label label or {@code null} for none
+     * @param modification modification or {@code null} for none
      */
-    public Country setLabel( java.lang.String label )
+    public NewsletterSubscription setModification( com.google.api.client.util.DateTime modification )
     {
-        this.label = label;
+        this.modification = modification;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getLocale()
+    public java.lang.Boolean getSubscribe()
     {
-        return locale;
+        return subscribe;
     }
 
     /**
-     * @param locale locale or {@code null} for none
+     * @param subscribe subscribe or {@code null} for none
      */
-    public Country setLocale( java.lang.String locale )
+    public NewsletterSubscription setSubscribe( java.lang.Boolean subscribe )
     {
-        this.locale = locale;
-        return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public java.lang.Integer getVersion()
-    {
-        return version;
-    }
-
-    /**
-     * @param version version or {@code null} for none
-     */
-    public Country setVersion( java.lang.Integer version )
-    {
-        this.version = version;
+        this.subscribe = subscribe;
         return this;
     }
 
     @Override
-    public Country set( String fieldName, Object value )
+    public NewsletterSubscription set( String fieldName, Object value )
     {
-        return ( Country ) super.set( fieldName, value );
+        return ( NewsletterSubscription ) super.set( fieldName, value );
     }
 
     @Override
-    public Country clone()
+    public NewsletterSubscription clone()
     {
-        return ( Country ) super.clone();
+        return ( NewsletterSubscription ) super.clone();
     }
 
 }

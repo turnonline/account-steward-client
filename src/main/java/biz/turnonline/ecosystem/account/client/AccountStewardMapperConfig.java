@@ -23,6 +23,8 @@ import biz.turnonline.ecosystem.steward.model.Country;
 import biz.turnonline.ecosystem.steward.model.Domain;
 import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import biz.turnonline.ecosystem.steward.model.LegalForm;
+import biz.turnonline.ecosystem.steward.model.NewsletterResponse;
+import biz.turnonline.ecosystem.steward.model.NewsletterSubscription;
 import biz.turnonline.ecosystem.steward.model.Uri;
 import ma.glasnost.orika.MapperFactory;
 import org.ctoolkit.restapi.client.adapter.BeanMapperConfig;
@@ -43,6 +45,8 @@ public class AccountStewardMapperConfig
         factory.classMap( Domain.class, biz.turnonline.ecosystem.account.client.model.Domain.class ).byDefault().register();
         factory.classMap( Uri.class, biz.turnonline.ecosystem.account.client.model.Uri.class ).byDefault().register();
         factory.classMap( ContactCard.class, biz.turnonline.ecosystem.account.client.model.ContactCard.class ).byDefault().register();
+        factory.classMap( NewsletterSubscription.class, biz.turnonline.ecosystem.account.client.model.NewsletterSubscription.class ).byDefault().register();
+        factory.classMap( NewsletterResponse.class, biz.turnonline.ecosystem.account.client.model.NewsletterResponse.class ).byDefault().register();
         factory.classMap( Country.class, biz.turnonline.ecosystem.account.client.model.Country.class ).byDefault().register();
         factory.classMap( LegalForm.class, biz.turnonline.ecosystem.account.client.model.LegalForm.class ).byDefault().register();
     }

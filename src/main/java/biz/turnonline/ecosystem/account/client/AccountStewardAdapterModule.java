@@ -24,12 +24,14 @@ import biz.turnonline.ecosystem.account.client.adaptee.DomainAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.DomainUriAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.InvoicingAdaptee;
 import biz.turnonline.ecosystem.account.client.adaptee.LegalFormAdaptee;
+import biz.turnonline.ecosystem.account.client.adaptee.NewsletterAdaptee;
 import biz.turnonline.ecosystem.steward.model.Account;
 import biz.turnonline.ecosystem.steward.model.ContactCard;
 import biz.turnonline.ecosystem.steward.model.Country;
 import biz.turnonline.ecosystem.steward.model.Domain;
 import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import biz.turnonline.ecosystem.steward.model.LegalForm;
+import biz.turnonline.ecosystem.steward.model.NewsletterSubscription;
 import biz.turnonline.ecosystem.steward.model.Uri;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
@@ -138,6 +140,11 @@ public class AccountStewardAdapterModule
         bind( new TypeLiteral<NewExecutorAdaptee<ContactCard>>()
         {
         } ).to( ContactAdaptee.class );
+
+        // Newsletter
+        bind( new TypeLiteral<UpdateExecutorAdaptee<NewsletterSubscription>>()
+        {
+        } ).to( NewsletterAdaptee.class );
 
         // Country adaptee
         bind( new TypeLiteral<GetExecutorAdaptee<Country>>()
