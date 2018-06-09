@@ -71,10 +71,6 @@
             <artifactId>guice</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-multibindings</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
@@ -93,7 +89,7 @@
     </dependencies>
 
     <properties>
-        <ctoolkit-library-bom.version>7</ctoolkit-library-bom.version>
+        <ctoolkit-library-bom.version>8</ctoolkit-library-bom.version>
         <ctoolkit-rest-facade-api.version>0.21</ctoolkit-rest-facade-api.version>
         <ctoolkit-rest-facade-adapter.version>0.26</ctoolkit-rest-facade-adapter.version>
         <jmockit.version>1.38</jmockit.version>
