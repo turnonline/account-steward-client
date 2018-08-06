@@ -71,7 +71,7 @@ public class ContactCard
 
     private Boolean vatPayer = false;
 
-    private Boolean newsletter;
+    private Boolean newsletter = null;
 
     /**
      * The contact unique identification.

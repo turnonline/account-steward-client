@@ -26,9 +26,11 @@ import java.io.Serializable;
 public class InvoicingConfig
         implements Serializable
 {
-    private static final long serialVersionUID = -652684399559948341L;
+    private static final long serialVersionUID = -8876402491700375465L;
 
     private String currency = null;
+
+    private Integer numberOfDays = 14;
 
     private Boolean hasBillingAddress = false;
 
@@ -37,7 +39,7 @@ public class InvoicingConfig
     private InvoicingConfigBillingContact billingContact = null;
 
     /**
-     * The currency code based on the ISO 4217. If not set, the country default will be set.
+     * The currency code (alphabetic code) based on the ISO 4217. If not set, the country default will be set.
      **/
     public InvoicingConfig currency( String currency )
     {
@@ -53,6 +55,26 @@ public class InvoicingConfig
     public void setCurrency( String currency )
     {
         this.currency = currency;
+    }
+
+    /**
+     * The default value of number of days for calculation of the invoice due date.
+     **/
+    public InvoicingConfig numberOfDays( Integer numberOfDays )
+    {
+        this.numberOfDays = numberOfDays;
+        return this;
+    }
+
+
+    public Integer getNumberOfDays()
+    {
+        return numberOfDays;
+    }
+
+    public void setNumberOfDays( Integer numberOfDays )
+    {
+        this.numberOfDays = numberOfDays;
     }
 
     /**
@@ -117,6 +139,7 @@ public class InvoicingConfig
     {
         return "class InvoicingConfig {\n" +
                 "    currency: " + toIndentedString( currency ) + "\n" +
+                "    numberOfDays: " + toIndentedString( numberOfDays ) + "\n" +
                 "    hasBillingAddress: " + toIndentedString( hasBillingAddress ) + "\n" +
                 "    billingAddress: " + toIndentedString( billingAddress ) + "\n" +
                 "    billingContact: " + toIndentedString( billingContact ) + "\n" +

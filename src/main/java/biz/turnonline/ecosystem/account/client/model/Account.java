@@ -365,7 +365,8 @@ public class Account
     }
 
     /**
-     * The business account details. If the property \"company\" is false, the posted values will be stored anyway for further use.
+     * The business account details. If the property \"company\" is false, the posted values will be stored anyway for further use,
+     * however account is still being considered as a personal account.
      **/
     public Account business( AccountBusiness business )
     {
