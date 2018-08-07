@@ -25,7 +25,7 @@ import java.io.Serializable;
 public class ContactCard
         implements Serializable
 {
-    private static final long serialVersionUID = 7799047662827260036L;
+    private static final long serialVersionUID = 6314018705318264831L;
 
     private Long id = null;
 
@@ -72,6 +72,8 @@ public class ContactCard
     private Boolean vatPayer = false;
 
     private Boolean newsletter = null;
+
+    private Integer numberOfDays = null;
 
     /**
      * The contact unique identification.
@@ -513,6 +515,25 @@ public class ContactCard
         this.newsletter = newsletter;
     }
 
+    /**
+     * The number of days for calculation of the invoice due date for this specific contact.
+     **/
+    public ContactCard numberOfDays( Integer numberOfDays )
+    {
+        this.numberOfDays = numberOfDays;
+        return this;
+    }
+
+    public Integer getNumberOfDays()
+    {
+        return numberOfDays;
+    }
+
+    public void setNumberOfDays( Integer numberOfDays )
+    {
+        this.numberOfDays = numberOfDays;
+    }
+
     @Override
     public String toString()
     {
@@ -540,6 +561,7 @@ public class ContactCard
                 "    vatId: " + toIndentedString( vatId ) + "\n" +
                 "    vatPayer: " + toIndentedString( vatPayer ) + "\n" +
                 "    newsletter: " + toIndentedString( newsletter ) + "\n" +
+                "    numberOfDays: " + toIndentedString( numberOfDays ) + "\n" +
                 "}";
     }
 
