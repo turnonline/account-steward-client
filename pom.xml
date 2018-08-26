@@ -35,6 +35,17 @@
         Account &amp; Contact Management service REST API Java Client
     </description>
 
+    <scm>
+        <connection>scm:git:[fetch=]git@github.com:turnonline/account-steward-client.git</connection>
+        <developerConnection>scm:git:[push=]git@github.com:turnonline/account-steward-client.git</developerConnection>
+        <url>https://github.com/turnonline/account-steward-client</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/turnonline/account-steward-client/issues</url>
+    </issueManagement>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
