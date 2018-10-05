@@ -20,7 +20,6 @@ package biz.turnonline.ecosystem.account.client;
 import biz.turnonline.ecosystem.steward.Steward;
 import biz.turnonline.ecosystem.steward.StewardScopes;
 import com.google.api.client.http.HttpRequestInitializer;
-import com.google.api.client.http.HttpStatusCodes;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import org.ctoolkit.restapi.client.AccessToken;
@@ -82,7 +81,7 @@ public class AccountStewardApiModule
                     + " Application name: " + factory.getApplicationName( API_PREFIX )
                     + " Service account: " + factory.getServiceAccountEmail( API_PREFIX ), e );
 
-            throw new RemoteServerErrorException( HttpStatusCodes.STATUS_CODE_SERVER_ERROR, e.getMessage() );
+            throw new RemoteServerErrorException( e.getMessage() );
         }
 
         return builder.build();

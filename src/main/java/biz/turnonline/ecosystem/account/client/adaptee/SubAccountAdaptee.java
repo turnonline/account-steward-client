@@ -58,12 +58,12 @@ public class SubAccountAdaptee
     }
 
     @Override
-    public void executeDelete( @Nonnull Object request,
-                               @Nullable Map<String, Object> parameters,
-                               @Nullable Locale locale )
+    public Object executeDelete( @Nonnull Object request,
+                                 @Nullable Map<String, Object> parameters,
+                                 @Nullable Locale locale )
             throws IOException
     {
-        execute( request, parameters );
+        return execute( request, parameters );
     }
 
     @Override
@@ -79,7 +79,7 @@ public class SubAccountAdaptee
                                   @Nullable Locale locale )
             throws IOException
     {
-        return SubAccount.class.cast( execute( request, parameters ) );
+        return ( SubAccount ) execute( request, parameters );
     }
 
     @Override

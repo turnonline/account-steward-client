@@ -56,12 +56,12 @@ public class AccountAdaptee
     }
 
     @Override
-    public void executeDelete( @Nonnull Object request,
-                               @Nullable Map<String, Object> parameters,
-                               @Nullable Locale locale )
+    public Object executeDelete( @Nonnull Object request,
+                                 @Nullable Map<String, Object> parameters,
+                                 @Nullable Locale locale )
             throws IOException
     {
-        execute( request, parameters );
+        return execute( request, parameters );
     }
 
     @Override
@@ -77,7 +77,7 @@ public class AccountAdaptee
                                @Nullable Locale locale )
             throws IOException
     {
-        return Account.class.cast( execute( request, parameters ) );
+        return ( Account ) execute( request, parameters );
     }
 
     @Override

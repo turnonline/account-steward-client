@@ -71,12 +71,12 @@ public class ContactAdaptee
     }
 
     @Override
-    public void executeDelete( @Nonnull Object request,
-                               @Nullable Map<String, Object> parameters,
-                               @Nullable Locale locale )
+    public Object executeDelete( @Nonnull Object request,
+                                 @Nullable Map<String, Object> parameters,
+                                 @Nullable Locale locale )
             throws IOException
     {
-        execute( request, parameters );
+        return execute( request, parameters );
     }
 
     @Override
@@ -105,7 +105,7 @@ public class ContactAdaptee
                                    @Nullable Locale locale )
             throws IOException
     {
-        return ContactCard.class.cast( execute( request, parameters ) );
+        return ( ContactCard ) execute( request, parameters );
     }
 
     @Override

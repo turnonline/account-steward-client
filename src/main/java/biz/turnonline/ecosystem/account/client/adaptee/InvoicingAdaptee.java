@@ -62,11 +62,11 @@ public class InvoicingAdaptee
     }
 
     @Override
-    public void executeDelete( @Nonnull Object request,
-                               @Nullable Map<String, Object> parameters,
-                               @Nullable Locale locale ) throws IOException
+    public Object executeDelete( @Nonnull Object request,
+                                 @Nullable Map<String, Object> parameters,
+                                 @Nullable Locale locale ) throws IOException
     {
-        execute( request, parameters );
+        return execute( request, parameters );
     }
 
     @Override
@@ -80,7 +80,7 @@ public class InvoicingAdaptee
                                        @Nullable Map<String, Object> parameters,
                                        @Nullable Locale locale ) throws IOException
     {
-        return InvoicingConfig.class.cast( execute( request, parameters ) );
+        return ( InvoicingConfig ) execute( request, parameters );
     }
 
     @Override

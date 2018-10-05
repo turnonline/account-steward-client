@@ -67,11 +67,11 @@ public class DomainAdaptee
     }
 
     @Override
-    public void executeDelete( @Nonnull Object request,
-                               @Nullable Map<String, Object> parameters,
-                               @Nullable Locale locale ) throws IOException
+    public Object executeDelete( @Nonnull Object request,
+                                 @Nullable Map<String, Object> parameters,
+                                 @Nullable Locale locale ) throws IOException
     {
-        execute( request, parameters );
+        return execute( request, parameters );
     }
 
     @Override
@@ -85,7 +85,7 @@ public class DomainAdaptee
                               @Nullable Map<String, Object> parameters,
                               @Nullable Locale locale ) throws IOException
     {
-        return Domain.class.cast( execute( request, parameters ) );
+        return ( Domain ) execute( request, parameters );
     }
 
     @Override
