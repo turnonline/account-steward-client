@@ -15,7 +15,7 @@
  *
  */
 
-package biz.turnonline.ecosystem.account.client.adaptee;
+package biz.turnonline.ecosystem.steward.facade.adaptee;
 
 import biz.turnonline.ecosystem.steward.Steward;
 import biz.turnonline.ecosystem.steward.model.ContactCard;

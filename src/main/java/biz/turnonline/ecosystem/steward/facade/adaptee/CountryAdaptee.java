@@ -15,10 +15,10 @@
  *
  */
 
-package biz.turnonline.ecosystem.account.client.adaptee;
+package biz.turnonline.ecosystem.steward.facade.adaptee;
 
 import biz.turnonline.ecosystem.steward.Steward;
-import biz.turnonline.ecosystem.steward.model.LegalForm;
+import biz.turnonline.ecosystem.steward.model.Country;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
 import org.ctoolkit.restapi.client.adapter.AbstractGetExecutorAdaptee;
@@ -32,16 +32,16 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * The {@link LegalForm} adaptee implementation.
+ * The {@link Country} adaptee implementation.
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
-public class LegalFormAdaptee
-        extends AbstractGetExecutorAdaptee<Steward, LegalForm>
-        implements ListExecutorAdaptee<LegalForm>
+public class CountryAdaptee
+        extends AbstractGetExecutorAdaptee<Steward, Country>
+        implements ListExecutorAdaptee<Country>
 {
     @Inject
-    public LegalFormAdaptee( Steward client )
+    public CountryAdaptee( Steward client )
     {
         super( client );
     }
@@ -50,27 +50,27 @@ public class LegalFormAdaptee
     public Object prepareGet( @Nonnull Identifier identifier )
             throws IOException
     {
-        return client().legalforms().get( identifier.getString() );
+        return client().countries().get( identifier.getString() );
     }
 
     @Override
     public Object prepareList( @Nullable Identifier parentKey )
             throws IOException
     {
-        return client().legalforms().list();
+        return client().countries().list();
     }
 
     @Override
-    public List<LegalForm> executeList( @Nonnull Object request,
-                                        @Nullable Map<String, Object> parameters,
-                                        @Nullable Locale locale,
-                                        @Nullable Integer start,
-                                        @Nullable Integer length,
-                                        @Nullable String orderBy,
-                                        @Nullable Boolean ascending )
+    public List<Country> executeList( @Nonnull Object request,
+                                      @Nullable Map<String, Object> parameters,
+                                      @Nullable Locale locale,
+                                      @Nullable Integer start,
+                                      @Nullable Integer length,
+                                      @Nullable String orderBy,
+                                      @Nullable Boolean ascending )
             throws IOException
     {
-        Steward.Legalforms.List list = ( Steward.Legalforms.List ) request;
+        Steward.Countries.List list = ( Steward.Countries.List ) request;
 
         fill( request, parameters );
         return list.execute().getItems();

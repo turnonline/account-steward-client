@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for InvoicingConfigBillingAddress.
  *
@@ -32,7 +34,9 @@ package biz.turnonline.ecosystem.steward.model;
 @SuppressWarnings( "javadoc" )
 public final class InvoicingConfigBillingAddress
         extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 6226683261975641161L;
 
     /**
      * The value may be {@code null}.

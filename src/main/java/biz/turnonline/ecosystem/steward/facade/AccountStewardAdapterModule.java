@@ -15,16 +15,16 @@
  *
  */
 
-package biz.turnonline.ecosystem.account.client;
+package biz.turnonline.ecosystem.steward.facade;
 
-import biz.turnonline.ecosystem.account.client.adaptee.AccountAdaptee;
-import biz.turnonline.ecosystem.account.client.adaptee.ContactAdaptee;
-import biz.turnonline.ecosystem.account.client.adaptee.CountryAdaptee;
-import biz.turnonline.ecosystem.account.client.adaptee.DomainAdaptee;
-import biz.turnonline.ecosystem.account.client.adaptee.DomainUriAdaptee;
-import biz.turnonline.ecosystem.account.client.adaptee.InvoicingAdaptee;
-import biz.turnonline.ecosystem.account.client.adaptee.LegalFormAdaptee;
-import biz.turnonline.ecosystem.account.client.adaptee.NewsletterAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.AccountAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.ContactAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.CountryAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.DomainAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.DomainUriAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.InvoicingAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.LegalFormAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.NewsletterAdaptee;
 import biz.turnonline.ecosystem.steward.model.Account;
 import biz.turnonline.ecosystem.steward.model.ContactCard;
 import biz.turnonline.ecosystem.steward.model.Country;
@@ -35,16 +35,12 @@ import biz.turnonline.ecosystem.steward.model.NewsletterSubscription;
 import biz.turnonline.ecosystem.steward.model.Uri;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
-import com.google.inject.multibindings.Multibinder;
 import org.ctoolkit.restapi.client.adaptee.DeleteExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.GetExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.InsertExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.NewExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.UpdateExecutorAdaptee;
-import org.ctoolkit.restapi.client.adapter.BeanMapperConfig;
-
-import javax.inject.Singleton;
 
 /**
  * The account management guice default adaptee configuration.
@@ -163,8 +159,5 @@ public class AccountStewardAdapterModule
         bind( new TypeLiteral<ListExecutorAdaptee<LegalForm>>()
         {
         } ).to( LegalFormAdaptee.class );
-
-        Multibinder<BeanMapperConfig> multibinder = Multibinder.newSetBinder( binder(), BeanMapperConfig.class );
-        multibinder.addBinding().to( AccountStewardMapperConfig.class ).in( Singleton.class );
     }
 }

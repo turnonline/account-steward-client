@@ -15,12 +15,12 @@
  *
  */
 
-package biz.turnonline.ecosystem.account.client.model;
+package biz.turnonline.ecosystem.steward.facade;
 
 import java.util.Locale;
 
-import static biz.turnonline.ecosystem.account.client.model.Domicile.RoundingMode.HUNDREDTHS;
-import static biz.turnonline.ecosystem.account.client.model.Domicile.RoundingMode.TENTHS;
+import static biz.turnonline.ecosystem.steward.facade.Domicile.RoundingMode.HUNDREDTHS;
+import static biz.turnonline.ecosystem.steward.facade.Domicile.RoundingMode.TENTHS;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**

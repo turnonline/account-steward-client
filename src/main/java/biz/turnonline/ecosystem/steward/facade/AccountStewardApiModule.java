@@ -15,7 +15,7 @@
  *
  */
 
-package biz.turnonline.ecosystem.account.client;
+package biz.turnonline.ecosystem.steward.facade;
 
 import biz.turnonline.ecosystem.steward.Steward;
 import biz.turnonline.ecosystem.steward.StewardScopes;
