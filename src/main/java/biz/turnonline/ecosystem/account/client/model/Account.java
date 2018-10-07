@@ -22,7 +22,9 @@ import java.io.Serializable;
 public class Account
         implements Serializable
 {
-    private static final long serialVersionUID = 4192743023975738655L;
+    private static final long serialVersionUID = -5567631787379908203L;
+
+    private Long id = null;
 
     private String email = null;
 
@@ -59,6 +61,26 @@ public class Account
     private AccountBusiness business = null;
 
     private InvoicingConfig invoicing = null;
+
+    /**
+     * The account unique identification
+     **/
+    public Account id( Long id )
+    {
+        this.id = id;
+        return this;
+    }
+
+
+    public Long getId()
+    {
+        return id;
+    }
+
+    public void setId( Long id )
+    {
+        this.id = id;
+    }
 
     /**
      * The login email address as the account unique identification, taken from the login provider as an authenticated email.
@@ -407,6 +429,7 @@ public class Account
     public String toString()
     {
         return "class Account {\n" +
+                "    id: " + toIndentedString( id ) + "\n" +
                 "    email: " + toIndentedString( email ) + "\n" +
                 "    identityId: " + toIndentedString( identityId ) + "\n" +
                 "    loginProvider: " + toIndentedString( loginProvider ) + "\n" +
