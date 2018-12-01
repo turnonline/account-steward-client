@@ -45,6 +45,16 @@ public class AccountStewardApiModule
 {
     public static final String API_PREFIX = "account";
 
+    public static final String ACCOUNT_TOPIC = "account.changes";
+
+    public static final String ACCOUNT_DELETION = "AccountDeletion";
+
+    public static final String ACCOUNT_UNIQUE_ID = "AccountUnique_ID";
+
+    public static final String DATA_TYPE = "DataType";
+
+    public static final String NEW_ACCOUNT_SIGN_UP = "NewAccountSign-Up";
+
     private static final Logger logger = LoggerFactory.getLogger( AccountStewardApiModule.class );
 
     private ApiToken<? extends HttpRequestInitializer> initialized;
