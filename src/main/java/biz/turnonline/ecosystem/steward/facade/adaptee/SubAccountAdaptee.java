@@ -17,7 +17,7 @@
 
 package biz.turnonline.ecosystem.steward.facade.adaptee;
 
-import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.AccountSteward;
 import biz.turnonline.ecosystem.steward.model.SubAccount;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
@@ -41,11 +41,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class SubAccountAdaptee
-        extends AbstractGoogleClientAdaptee<Steward>
+        extends AbstractGoogleClientAdaptee<AccountSteward>
         implements RestExecutorAdaptee<SubAccount>, NewExecutorAdaptee<SubAccount>
 {
     @Inject
-    public SubAccountAdaptee( Steward client )
+    public SubAccountAdaptee( AccountSteward client )
     {
         super( client );
     }
@@ -125,7 +125,7 @@ public class SubAccountAdaptee
                                          @Nullable Boolean ascending )
             throws IOException
     {
-        Steward.Accounts.Sub.List list = ( Steward.Accounts.Sub.List ) request;
+        AccountSteward.Accounts.Sub.List list = ( AccountSteward.Accounts.Sub.List ) request;
         if ( offset != null && offset > 0 )
         {
             list.setOffset( offset );

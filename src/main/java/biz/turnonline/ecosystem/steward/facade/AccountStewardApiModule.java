@@ -17,9 +17,10 @@
 
 package biz.turnonline.ecosystem.steward.facade;
 
-import biz.turnonline.ecosystem.steward.Steward;
-import biz.turnonline.ecosystem.steward.StewardScopes;
+import biz.turnonline.ecosystem.steward.AccountSteward;
+import biz.turnonline.ecosystem.steward.AccountStewardScopes;
 import com.google.api.client.http.HttpRequestInitializer;
+import com.google.common.base.Strings;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import org.ctoolkit.restapi.client.AccessToken;
@@ -45,51 +46,46 @@ public class AccountStewardApiModule
 {
     public static final String API_PREFIX = "account";
 
-    public static final String ACCOUNT_TOPIC = "account.changes";
-
-    public static final String ACCOUNT_DELETION = "AccountDeletion";
-
-    public static final String ACCOUNT_UNIQUE_ID = "AccountUnique_ID";
-
-    public static final String DATA_TYPE = "DataType";
-
-    public static final String NEW_ACCOUNT_SIGN_UP = "NewAccountSign-Up";
-
     private static final Logger logger = LoggerFactory.getLogger( AccountStewardApiModule.class );
 
     private ApiToken<? extends HttpRequestInitializer> initialized;
 
-    @Override
-    protected void configure()
-    {
-    }
-
     @Provides
     @Singleton
-    Steward provideAccountManagement( GoogleApiProxyFactory factory )
+    AccountSteward provideAccountManagement( GoogleApiProxyFactory factory )
     {
-        Set<String> scopes = StewardScopes.all();
-        Steward.Builder builder;
+        Set<String> scopes = AccountStewardScopes.all();
+        AccountSteward.Builder builder;
+
+        String applicationName = factory.getApplicationName( API_PREFIX );
+        String endpointUrl = factory.getEndpointUrl( API_PREFIX );
+        String serviceAccount = factory.getServiceAccountEmail( API_PREFIX );
 
         try
         {
             initialized = factory.authorize( scopes, null, API_PREFIX );
             HttpRequestInitializer credential = initialized.getCredential();
-            builder = new Steward.Builder( factory.getHttpTransport(), factory.getJsonFactory(), credential );
-            builder.setApplicationName( factory.getApplicationName( API_PREFIX ) );
+
+            builder = new AccountSteward.Builder( factory.getHttpTransport(), factory.getJsonFactory(), credential );
+            builder.setApplicationName( applicationName );
+
+            if ( !Strings.isNullOrEmpty( endpointUrl ) )
+            {
+                builder.setRootUrl( endpointUrl );
+            }
         }
         catch ( GeneralSecurityException e )
         {
             logger.error( "Failed. Scopes: " + scopes.toString()
-                    + " Application name: " + factory.getApplicationName( API_PREFIX )
-                    + " Service account: " + factory.getServiceAccountEmail( API_PREFIX ), e );
+                    + " Application name: " + applicationName
+                    + " Service account: " + serviceAccount, e );
             throw new UnauthorizedException( e.getMessage() );
         }
         catch ( IOException e )
         {
             logger.error( "Failed. Scopes: " + scopes.toString()
-                    + " Application name: " + factory.getApplicationName( API_PREFIX )
-                    + " Service account: " + factory.getServiceAccountEmail( API_PREFIX ), e );
+                    + " Application name: " + applicationName
+                    + " Service account: " + serviceAccount, e );
 
             throw new RemoteServerErrorException( e.getMessage() );
         }
@@ -99,7 +95,7 @@ public class AccountStewardApiModule
 
     @Provides
     @AccessToken( apiName = API_PREFIX )
-    ApiToken.Data provideAccountManagementTokenData( Steward client )
+    ApiToken.Data provideAccountStewardApiTokenData( AccountSteward client )
     {
         initialized.setServiceUrl( client.getBaseUrl() );
         return initialized.getTokenData();

@@ -1,6 +1,6 @@
 package biz.turnonline.ecosystem.steward.facade.adaptee;
 
-import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.AccountSteward;
 import biz.turnonline.ecosystem.steward.model.NewsletterSubscription;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
@@ -17,10 +17,10 @@ import java.io.IOException;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class NewsletterAdaptee
-        extends AbstractUpdateExecutorAdaptee<Steward, NewsletterSubscription>
+        extends AbstractUpdateExecutorAdaptee<AccountSteward, NewsletterSubscription>
 {
     @Inject
-    public NewsletterAdaptee( Steward client )
+    public NewsletterAdaptee( AccountSteward client )
     {
         super( client );
     }

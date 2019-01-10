@@ -17,7 +17,7 @@
 
 package biz.turnonline.ecosystem.steward.facade.adaptee;
 
-import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.AccountSteward;
 import biz.turnonline.ecosystem.steward.model.Domain;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.DeleteExecutorAdaptee;
@@ -50,12 +50,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class DomainAdaptee
-        extends AbstractGoogleClientAdaptee<Steward>
+        extends AbstractGoogleClientAdaptee<AccountSteward>
         implements InsertExecutorAdaptee<Domain>, GetExecutorAdaptee<Domain>,
         ListExecutorAdaptee<Domain>, DeleteExecutorAdaptee<Domain>
 {
     @Inject
-    public DomainAdaptee( Steward client )
+    public DomainAdaptee( AccountSteward client )
     {
         super( client );
     }
@@ -121,7 +121,7 @@ public class DomainAdaptee
                                      @Nullable String orderBy,
                                      @Nullable Boolean ascending ) throws IOException
     {
-        Steward.Domains.List list = ( Steward.Domains.List ) request;
+        AccountSteward.Domains.List list = ( AccountSteward.Domains.List ) request;
         if ( offset != null && offset > 0 )
         {
             list.setOffset( offset );

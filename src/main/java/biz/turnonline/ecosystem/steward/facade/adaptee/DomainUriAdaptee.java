@@ -17,7 +17,7 @@
 
 package biz.turnonline.ecosystem.steward.facade.adaptee;
 
-import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.AccountSteward;
 import biz.turnonline.ecosystem.steward.model.Uri;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
@@ -40,10 +40,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class DomainUriAdaptee
-        extends AbstractInsertExecutorAdaptee<Steward, Uri>
+        extends AbstractInsertExecutorAdaptee<AccountSteward, Uri>
 {
     @Inject
-    public DomainUriAdaptee( Steward client )
+    public DomainUriAdaptee( AccountSteward client )
     {
         super( client );
     }

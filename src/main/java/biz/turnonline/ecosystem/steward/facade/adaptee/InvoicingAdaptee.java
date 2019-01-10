@@ -17,7 +17,7 @@
 
 package biz.turnonline.ecosystem.steward.facade.adaptee;
 
-import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.AccountSteward;
 import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.DeleteExecutorAdaptee;
@@ -45,12 +45,12 @@ import java.util.Map;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class InvoicingAdaptee
-        extends AbstractGoogleClientAdaptee<Steward>
+        extends AbstractGoogleClientAdaptee<AccountSteward>
         implements GetExecutorAdaptee<InvoicingConfig>, UpdateExecutorAdaptee<InvoicingConfig>,
         DeleteExecutorAdaptee<InvoicingConfig>
 {
     @Inject
-    public InvoicingAdaptee( Steward client )
+    public InvoicingAdaptee( AccountSteward client )
     {
         super( client );
     }

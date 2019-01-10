@@ -17,7 +17,7 @@
 
 package biz.turnonline.ecosystem.steward.facade.adaptee;
 
-import biz.turnonline.ecosystem.steward.Steward;
+import biz.turnonline.ecosystem.steward.AccountSteward;
 import biz.turnonline.ecosystem.steward.model.Account;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
@@ -39,11 +39,11 @@ import java.util.Map;
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
 public class AccountAdaptee
-        extends AbstractGoogleClientAdaptee<Steward>
+        extends AbstractGoogleClientAdaptee<AccountSteward>
         implements RestExecutorAdaptee<Account>, NewExecutorAdaptee<Account>
 {
     @Inject
-    public AccountAdaptee( Steward client )
+    public AccountAdaptee( AccountSteward client )
     {
         super( client );
     }
@@ -115,7 +115,7 @@ public class AccountAdaptee
                                       @Nullable Boolean ascending )
             throws IOException
     {
-        Steward.Accounts.List list = ( Steward.Accounts.List ) request;
+        AccountSteward.Accounts.List list = ( AccountSteward.Accounts.List ) request;
         if ( offset != null && offset > 0 )
         {
             list.setOffset( offset );
