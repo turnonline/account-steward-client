@@ -28,7 +28,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.turnonline.ecosystem</groupId>
     <artifactId>turnonline-account-steward-client</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.9-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Account &amp; Contact Management Java Client</name>
     <description>
@@ -90,16 +90,16 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.11</version>
+            <version>6.14.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
-        <ctoolkit-library-bom.version>9</ctoolkit-library-bom.version>
+        <ctoolkit-library-bom.version>10</ctoolkit-library-bom.version>
         <ctoolkit-rest-facade-api.version>0.26</ctoolkit-rest-facade-api.version>
         <ctoolkit-rest-facade-adapter.version>0.30</ctoolkit-rest-facade-adapter.version>
-        <jmockit.version>1.38</jmockit.version>
+        <jmockit.version>1.41</jmockit.version>
         <!-- jmockit settings for OpenJDK otherwise throws 'IllegalStateException: To run on OpenJDK 64-Bit Server VM use -javaagent..' -->
         <jmockit.setting>
             -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
