@@ -41,12 +41,12 @@ import java.util.Set;
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
-public class AccountStewardApiModule
+public class AccountStewardClientModule
         extends AbstractModule
 {
     public static final String API_PREFIX = "account";
 
-    private static final Logger logger = LoggerFactory.getLogger( AccountStewardApiModule.class );
+    private static final Logger logger = LoggerFactory.getLogger( AccountStewardClientModule.class );
 
     private ApiToken<? extends HttpRequestInitializer> initialized;
 
