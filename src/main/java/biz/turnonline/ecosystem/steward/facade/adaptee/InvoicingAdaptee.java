@@ -29,6 +29,7 @@ import org.ctoolkit.restapi.client.adapter.AbstractGoogleClientAdaptee;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
@@ -50,7 +51,7 @@ public class InvoicingAdaptee
         DeleteExecutorAdaptee<InvoicingConfig>
 {
     @Inject
-    public InvoicingAdaptee( AccountSteward client )
+    public InvoicingAdaptee( Provider<AccountSteward> client )
     {
         super( client );
     }

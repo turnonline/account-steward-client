@@ -26,6 +26,7 @@ import org.ctoolkit.restapi.client.adapter.AbstractInsertExecutorAdaptee;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import java.io.IOException;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -43,7 +44,7 @@ public class DomainUriAdaptee
         extends AbstractInsertExecutorAdaptee<AccountSteward, Uri>
 {
     @Inject
-    public DomainUriAdaptee( AccountSteward client )
+    public DomainUriAdaptee( Provider<AccountSteward> client )
     {
         super( client );
     }

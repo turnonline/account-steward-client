@@ -26,6 +26,7 @@ import org.ctoolkit.restapi.client.adapter.AbstractGetExecutorAdaptee;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -41,7 +42,7 @@ public class CountryAdaptee
         implements ListExecutorAdaptee<Country>
 {
     @Inject
-    public CountryAdaptee( AccountSteward client )
+    public CountryAdaptee( Provider<AccountSteward> client )
     {
         super( client );
     }

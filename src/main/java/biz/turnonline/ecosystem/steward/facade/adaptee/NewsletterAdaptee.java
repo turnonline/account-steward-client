@@ -9,6 +9,7 @@ import org.ctoolkit.restapi.client.adapter.AbstractUpdateExecutorAdaptee;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import java.io.IOException;
 
 /**
@@ -20,7 +21,7 @@ public class NewsletterAdaptee
         extends AbstractUpdateExecutorAdaptee<AccountSteward, NewsletterSubscription>
 {
     @Inject
-    public NewsletterAdaptee( AccountSteward client )
+    public NewsletterAdaptee( Provider<AccountSteward> client )
     {
         super( client );
     }

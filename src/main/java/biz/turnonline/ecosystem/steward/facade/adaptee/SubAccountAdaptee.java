@@ -28,6 +28,7 @@ import org.ctoolkit.restapi.client.adapter.AbstractGoogleClientAdaptee;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -45,7 +46,7 @@ public class SubAccountAdaptee
         implements RestExecutorAdaptee<SubAccount>, NewExecutorAdaptee<SubAccount>
 {
     @Inject
-    public SubAccountAdaptee( AccountSteward client )
+    public SubAccountAdaptee( Provider<AccountSteward> client )
     {
         super( client );
     }
