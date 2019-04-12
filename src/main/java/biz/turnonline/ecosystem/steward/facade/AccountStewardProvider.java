@@ -67,8 +67,8 @@ class AccountStewardProvider
                                     @Nonnull HttpRequestInitializer credential,
                                     @Nonnull String api )
     {
-        String applicationName = factory.getApplicationName( API_PREFIX );
-        String endpointUrl = factory.getEndpointUrl( API_PREFIX );
+        String applicationName = factory.getApplicationName( api );
+        String endpointUrl = factory.getEndpointUrl( api );
 
         AccountSteward.Builder builder = new AccountSteward.Builder( transport, jsonFactory, credential );
         builder.setApplicationName( applicationName );
