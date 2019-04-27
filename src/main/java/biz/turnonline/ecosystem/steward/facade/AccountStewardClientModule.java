@@ -19,6 +19,8 @@ package biz.turnonline.ecosystem.steward.facade;
 
 import biz.turnonline.ecosystem.steward.AccountSteward;
 import com.google.inject.AbstractModule;
+import com.google.inject.multibindings.MapBinder;
+import org.ctoolkit.restapi.client.adapter.ClientApi;
 
 /**
  * The Account &amp; Contact Management Java Client guice module default configuration.
@@ -34,5 +36,9 @@ public class AccountStewardClientModule
     protected void configure()
     {
         bind( AccountSteward.class ).toProvider( AccountStewardProvider.class );
+
+        MapBinder<String, ClientApi> mapBinder;
+        mapBinder = MapBinder.newMapBinder( binder(), String.class, ClientApi.class );
+        mapBinder.addBinding( API_PREFIX ).to( AccountStewardProvider.class );
     }
 }
