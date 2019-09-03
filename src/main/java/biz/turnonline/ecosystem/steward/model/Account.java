@@ -18,6 +18,11 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import biz.turnonline.ecosystem.steward.facade.Domicile;
+import com.google.common.base.Strings;
+
+import java.util.Currency;
+
 /**
  * Model definition for Account.
  *
@@ -154,6 +159,28 @@ public final class Account
      */
     @com.google.api.client.util.Key
     private java.lang.String zoneId;
+
+    /**
+     * Returns account's default currency ISO 4217 based alphabetic code
+     * (either explicitly configured or country based).
+     * If account has not defined a currency yet, the currency of {@link Domicile#getDefault()} will be returned.
+     *
+     * @return the account's default currency code or default one (always returns a value)
+     * @throws IllegalArgumentException if account specified currency code is not a supported ISO 4217 code;
+     *                                  or if account business domicile has either invalid or unsupported value
+     */
+    public String getAccountCurrency()
+    {
+        String currency = invoicing == null ? null : invoicing.getCurrency();
+        if ( !Strings.isNullOrEmpty( currency ) )
+        {
+            Currency validCurrency = Currency.getInstance( currency );
+            return validCurrency.getCurrencyCode();
+        }
+
+        String domicile = business == null ? null : business.getDomicile();
+        return domicile == null ? Domicile.getDefault().getCurrency() : Domicile.valueOf( domicile ).getCurrency();
+    }
 
     /**
      * @return value or {@code null} for none
