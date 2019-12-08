@@ -1,2 +1,2 @@
 # turnonline-account-steward-client
-The Account & Contact management REST API java client
+TurnOnline.biz Ecosystem Account &amp; Resources ownership management REST API Java Client

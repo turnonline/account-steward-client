@@ -29,9 +29,9 @@
     <artifactId>turnonline-account-steward-client</artifactId>
     <version>0.20-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Account &amp; Contact Management Java Client</name>
+    <name>Account &amp; Resources ownership management Java Client</name>
     <description>
-        Account &amp; Contact Management service REST API Java Client
+        TurnOnline.biz Ecosystem Account &amp; Resources ownership management REST API Java Client
     </description>
 
     <scm>
