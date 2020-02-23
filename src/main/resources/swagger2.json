@@ -5,7 +5,7 @@
         "version": "1.0",
         "title": "Account Steward"
     },
-    "host": "${ENDPOINTS_SERVICE_NAME}",
+    "host": "${env.ENDPOINTS_SERVICE_NAME}",
     "basePath": "/api/steward",
     "tags": [
         {
