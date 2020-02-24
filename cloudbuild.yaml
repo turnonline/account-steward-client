@@ -1,9 +1,9 @@
 steps:
   - name: gcr.io/cloud-builders/git
-    args: ['clone', 'https://github.com/turnonline/account-steward-client']
+    args: ['clone', 'https://github.com/turnonline/account-steward-client.git']
   - name: gcr.io/cloud-builders/mvn
     entrypoint: 'mvn'
-    args: ['package']
+    args: ['resources:resources']
     env:
       - 'ENDPOINTS_SERVICE_NAME=${_ENDPOINTS_SERVICE_DOMAIN}'
   - name: gcr.io/cloud-builders/gcloud
