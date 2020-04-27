@@ -331,6 +331,93 @@
                 }
             ]
         },
+        "/v1/accounts/{login_id}/accounts/{account_id}/contacts": {
+            "put": {
+                "tags": [
+                    "Address Book"
+                ],
+                "summary": "Adds account into address book",
+                "description": "Adds the specified account in to address book of the authenticated account as a contact card. If the contact already exist it will be updated. In case of the empty request body all of the account properties relevant to the contact will be taken. Specify contact properties as part of the request body if you need to override the properties from the specified account.",
+                "operationId": "accountToAddressBook",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactCard"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The successfully either created or updated contact.",
+                        "schema": {
+                            "$ref": "#/definitions/ContactCard"
+                        }
+                    },
+                    "400": {
+                        "description": "The error indicates that client has made a request that server couldn't understand. The client should not repeat the request without modifications.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "The error when the authentication credential fails.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The error when client tries to update a resource that doesn't exist.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "It's a failure of the server. The client can repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "503": {
+                        "description": "The service is unavailable or the server has timed out processing of the request. The client may repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "firebase-a9a2a51a": []
+                    }
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "login_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "description": "The TurnOnline.biz Ecosystem account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
+                },
+                {
+                    "name": "account_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The ID of the account to be either added or updated as a contact in address book."
+                }
+            ]
+        },
         "/v1/accounts/{login_id}/contacts": {
             "get": {
                 "tags": [
