@@ -181,19 +181,25 @@ public class ContactAdaptee
             throws IOException
     {
         Identifier child = identifier.child();
-        String contactId;
 
-        // contact identification might be either Long ID or String contact email
-        if ( child.isLong() )
+        if ( identifier.hasController() && "contacts".equalsIgnoreCase( identifier.getController() ) )
         {
-            contactId = String.valueOf( child.getLong() );
+            return client().contacts().add( identifier.getString(), child.getLong(), resource );
         }
         else
         {
-            contactId = child.getString();
+            String contactId;
+            // contact identification might be either Long ID or String contact email
+            if ( child.isLong() )
+            {
+                contactId = String.valueOf( child.getLong() );
+            }
+            else
+            {
+                contactId = child.getString();
+            }
+            return client().contacts().update( identifier.getString(), contactId, resource );
         }
-
-        return client().contacts().update( identifier.getString(), contactId, resource );
     }
 
     @Override
