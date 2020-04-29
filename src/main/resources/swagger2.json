@@ -2868,8 +2868,7 @@
                     "default": "DEPUTY_STANDARD",
                     "enum": [
                         "DEPUTY_STANDARD",
-                        "DEPUTY_SELLER",
-                        "SERVICE_ACCOUNT"
+                        "DEPUTY_SELLER"
                     ]
                 },
                 "suffix": {
