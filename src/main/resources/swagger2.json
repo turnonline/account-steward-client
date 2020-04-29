@@ -12,10 +12,16 @@
             "name": "Account Management"
         },
         {
+            "name": "Account Domains"
+        },
+        {
+            "name": "Deputy Accounts"
+        },
+        {
             "name": "Address Book"
         },
         {
-            "name": "Common"
+            "name": "Configuration"
         },
         {
             "name": "Code-books"
@@ -337,7 +343,7 @@
                     "Address Book"
                 ],
                 "summary": "Adds account into address book",
-                "description": "Adds the specified account in to address book of the authenticated account as a contact card. If the contact already exist it will be updated. In case of the empty request body all of the account properties relevant to the contact will be taken. Specify contact properties as part of the request body if you need to override the properties from the specified account.",
+                "description": "Adds the specified account in to address book of the authenticated account as a contact card. If the contact already exist it will be updated. In case of the empty request body all of the account properties relevant to the contact will be taken. Specify contact properties as part of the request body if you need to override the properties from the specified account.\n\nOnly the account that represents a business account is allowed to be added. Otherwise a bad request will be thrown.",
                 "operationId": "accountToAddressBook",
                 "consumes": [
                     "application/json"
@@ -842,7 +848,7 @@
         "/v1/accounts/{login_id}/domains": {
             "get": {
                 "tags": [
-                    "Account Management"
+                    "Account Domains"
                 ],
                 "summary": "List account domains",
                 "description": "Searches for a domains associated with authenticated account.",
@@ -923,7 +929,7 @@
             },
             "post": {
                 "tags": [
-                    "Account Management"
+                    "Account Domains"
                 ],
                 "summary": "Create a new domain",
                 "description": "The domain must be unique otherwise validation will fail with bad request response.\n\n**Note:** in case the client will provide these properties “domain”, “subdomain”, and “uri” 3 domain records will be created; NAKED, SUBDOMAIN and PRODUCT.",
@@ -1005,7 +1011,7 @@
         "/v1/accounts/{login_id}/domains/{hostname}/uri": {
             "post": {
                 "tags": [
-                    "Account Management"
+                    "Account Domains"
                 ],
                 "summary": "Add new domain URI",
                 "description": "Creates a new domain that will be created based on the provided URI for single hostname (for example www.turnonline.biz - domain name and sub-domain).",
@@ -1099,7 +1105,7 @@
         "/v1/accounts/{login_id}/domains/{name}": {
             "get": {
                 "tags": [
-                    "Account Management"
+                    "Account Domains"
                 ],
                 "summary": "Return the domain",
                 "operationId": "getDomain",
@@ -1147,7 +1153,7 @@
             },
             "delete": {
                 "tags": [
-                    "Account Management"
+                    "Account Domains"
                 ],
                 "summary": "Delete the domain",
                 "operationId": "deleteDomain",
@@ -1218,7 +1224,7 @@
         "/v1/accounts/{login_id}/invoicing": {
             "get": {
                 "tags": [
-                    "Account Management"
+                    "Configuration"
                 ],
                 "summary": "Return the invoicing",
                 "operationId": "getInvoicingConfig",
@@ -1266,7 +1272,7 @@
             },
             "put": {
                 "tags": [
-                    "Account Management"
+                    "Configuration"
                 ],
                 "summary": "Update the invoicing",
                 "operationId": "updateInvoicingConfig",
@@ -1332,7 +1338,7 @@
             },
             "delete": {
                 "tags": [
-                    "Account Management"
+                    "Configuration"
                 ],
                 "summary": "Delete the invoicing",
                 "operationId": "deleteInvoicingConfig",
@@ -1389,7 +1395,7 @@
         "/v1/accounts/{login_id}/subs": {
             "get": {
                 "tags": [
-                    "Account Management"
+                    "Deputy Accounts"
                 ],
                 "summary": "Sub account list retrieval",
                 "description": "Retrieve sub accounts filtered with given criteria that belongs to the parent account.",
@@ -1457,7 +1463,7 @@
             },
             "post": {
                 "tags": [
-                    "Account Management"
+                    "Deputy Accounts"
                 ],
                 "summary": "Create a sub account",
                 "description": "Creates a new sub account to be associated to the parent account. User can sign in with this newly created sub account and work as with the main account however account will behave based on the role.",
@@ -1536,7 +1542,7 @@
         "/v1/accounts/{login_id}/subs/{sub_email}": {
             "get": {
                 "tags": [
-                    "Account Management"
+                    "Deputy Accounts"
                 ],
                 "summary": "Return the sub account",
                 "description": "Returns the sub account identified by the main account and sub email.",
@@ -1585,7 +1591,7 @@
             },
             "put": {
                 "tags": [
-                    "Account Management"
+                    "Deputy Accounts"
                 ],
                 "summary": "Update the sub account",
                 "operationId": "updateSubAccount",
@@ -1651,7 +1657,7 @@
             },
             "delete": {
                 "tags": [
-                    "Account Management"
+                    "Deputy Accounts"
                 ],
                 "summary": "Delete the sub account",
                 "operationId": "deleteSubAccount",
@@ -2010,7 +2016,7 @@
                 },
                 "contactEmail": {
                     "type": "string",
-                    "description": "The email address considered as a contact email used for notification purposes related to this account (supports comma separated list). If it's not provided the account's email will be used by default."
+                    "description": "The email address considered as a contact email used for notification purposes related to this account. Supports comma separated list. If it's not provided the account's email will be used by default."
                 },
                 "email": {
                     "type": "string",
@@ -2301,7 +2307,7 @@
                 },
                 "contactEmail": {
                     "type": "string",
-                    "description": "The contact email used either for notification purposes or for dealing with a potential issues with order."
+                    "description": "The contact email used either for notification purposes or for dealing with a potential issues with order. Supports comma separated list."
                 },
                 "contactPhone": {
                     "type": "string",
