@@ -343,24 +343,12 @@
                     "Address Book"
                 ],
                 "summary": "Adds account into address book",
-                "description": "Adds the specified account in to address book of the authenticated account as a contact card. If the contact already exist it will be updated. In case of the empty request body all of the account properties relevant to the contact will be taken. Specify contact properties as part of the request body if you need to override the properties from the specified account.\n\nOnly the account that represents a business account is allowed to be added. Otherwise a bad request will be thrown.",
+                "description": "Adds the specified account in to address book of the authenticated account as a contact card. If the contact already exist it will be updated.\n\nOnly the account that represents a business account is allowed to be added. Otherwise a bad request will be thrown.",
                 "operationId": "accountToAddressBook",
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ContactCard"
-                        }
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "200": {
                         "description": "The successfully either created or updated contact.",
