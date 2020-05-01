@@ -184,7 +184,7 @@ public class ContactAdaptee
 
         if ( identifier.hasController() && "contacts".equalsIgnoreCase( identifier.getController() ) )
         {
-            return client().contacts().add( identifier.getString(), child.getLong(), resource );
+            return client().contacts().add( identifier.getString(), child.getLong() );
         }
         else
         {
