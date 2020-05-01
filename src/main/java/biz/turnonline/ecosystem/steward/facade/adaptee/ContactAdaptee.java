@@ -181,8 +181,9 @@ public class ContactAdaptee
             throws IOException
     {
         Identifier child = identifier.child();
+        Identifier leaf = identifier.leaf();
 
-        if ( identifier.hasController() && "contacts".equalsIgnoreCase( identifier.getController() ) )
+        if ( leaf.hasController() && "contacts".equalsIgnoreCase( leaf.getController() ) )
         {
             return client().contacts().add( identifier.getString(), child.getLong() );
         }
