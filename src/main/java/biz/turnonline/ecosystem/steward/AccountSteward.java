@@ -1382,12 +1382,12 @@ public class AccountSteward
                     extends AccountStewardRequest<Void>
             {
 
-                private static final String REST_PATH = "accounts/{login_id}/subs/{sub_email}";
+                private static final String REST_PATH = "accounts/{login_id}/subs/{deputy_email}";
 
                 @com.google.api.client.util.Key( "login_id" )
                 private java.lang.String loginId;
 
-                @com.google.api.client.util.Key( "sub_email" )
+                @com.google.api.client.util.Key( "deputy_email" )
                 private java.lang.String subEmail;
 
                 /**
@@ -1490,12 +1490,12 @@ public class AccountSteward
                     extends AccountStewardRequest<biz.turnonline.ecosystem.steward.model.DeputyAccount>
             {
 
-                private static final String REST_PATH = "accounts/{login_id}/subs/{sub_email}";
+                private static final String REST_PATH = "accounts/{login_id}/subs/{deputy_email}";
 
                 @com.google.api.client.util.Key( "login_id" )
                 private java.lang.String loginId;
 
-                @com.google.api.client.util.Key( "sub_email" )
+                @com.google.api.client.util.Key( "deputy_email" )
                 private java.lang.String subEmail;
 
                 /**
@@ -1836,12 +1836,12 @@ public class AccountSteward
                     extends AccountStewardRequest<biz.turnonline.ecosystem.steward.model.Account>
             {
 
-                private static final String REST_PATH = "accounts/{login_id}/subs/{sub_email}";
+                private static final String REST_PATH = "accounts/{login_id}/subs/{deputy_email}";
 
                 @com.google.api.client.util.Key( "login_id" )
                 private java.lang.String loginId;
 
-                @com.google.api.client.util.Key( "sub_email" )
+                @com.google.api.client.util.Key( "deputy_email" )
                 private java.lang.String subEmail;
 
                 /**
