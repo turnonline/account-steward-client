@@ -18,7 +18,7 @@
 package biz.turnonline.ecosystem.steward.facade.adaptee;
 
 import biz.turnonline.ecosystem.steward.AccountSteward;
-import biz.turnonline.ecosystem.steward.model.SubAccount;
+import biz.turnonline.ecosystem.steward.model.DeputyAccount;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
 import org.ctoolkit.restapi.client.adaptee.NewExecutorAdaptee;
@@ -37,16 +37,16 @@ import java.util.Map;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * The {@link SubAccount} adaptee implementation.
+ * The {@link DeputyAccount} adaptee implementation.
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
-public class SubAccountAdaptee
+public class DeputyAccountAdaptee
         extends AbstractGoogleClientAdaptee<AccountSteward>
-        implements RestExecutorAdaptee<SubAccount>, NewExecutorAdaptee<SubAccount>
+        implements RestExecutorAdaptee<DeputyAccount>, NewExecutorAdaptee<DeputyAccount>
 {
     @Inject
-    public SubAccountAdaptee( Provider<AccountSteward> client )
+    public DeputyAccountAdaptee( Provider<AccountSteward> client )
     {
         super( client );
     }
@@ -75,21 +75,21 @@ public class SubAccountAdaptee
     }
 
     @Override
-    public SubAccount executeGet( @Nonnull Object request,
-                                  @Nullable Map<String, Object> parameters,
-                                  @Nullable Locale locale )
+    public DeputyAccount executeGet( @Nonnull Object request,
+                                     @Nullable Map<String, Object> parameters,
+                                     @Nullable Locale locale )
             throws IOException
     {
-        return ( SubAccount ) execute( request, parameters );
+        return ( DeputyAccount ) execute( request, parameters );
     }
 
     @Override
-    public Object prepareInsert( @Nonnull SubAccount resource,
+    public Object prepareInsert( @Nonnull DeputyAccount resource,
                                  @Nullable Identifier parentKey,
                                  @Nullable MediaProvider provider )
             throws IOException
     {
-        String errorMessage = "Sub account insert requires login email as a parent key.";
+        String errorMessage = "Deputy account insert requires login email as a parent key.";
         checkNotNull( parentKey, errorMessage );
         checkNotNull( parentKey.getString(), errorMessage );
 
@@ -109,7 +109,7 @@ public class SubAccountAdaptee
     public Object prepareList( @Nullable Identifier parentKey )
             throws IOException
     {
-        String errorMessage = "Sub account list retrieval requires login email as a parent key.";
+        String errorMessage = "Deputy account list retrieval requires login email as a parent key.";
         checkNotNull( parentKey, errorMessage );
         checkNotNull( parentKey.getString(), errorMessage );
 
@@ -117,13 +117,13 @@ public class SubAccountAdaptee
     }
 
     @Override
-    public List<SubAccount> executeList( @Nonnull Object request,
-                                         @Nullable Map<String, Object> parameters,
-                                         @Nullable Locale locale,
-                                         @Nullable Integer offset,
-                                         @Nullable Integer limit,
-                                         @Nullable String orderBy,
-                                         @Nullable Boolean ascending )
+    public List<DeputyAccount> executeList( @Nonnull Object request,
+                                            @Nullable Map<String, Object> parameters,
+                                            @Nullable Locale locale,
+                                            @Nullable Integer offset,
+                                            @Nullable Integer limit,
+                                            @Nullable String orderBy,
+                                            @Nullable Boolean ascending )
             throws IOException
     {
         AccountSteward.Accounts.Sub.List list = ( AccountSteward.Accounts.Sub.List ) request;
@@ -142,22 +142,20 @@ public class SubAccountAdaptee
 
     @Override
     public Object prepareNew( @Nullable String type )
-            throws IOException
     {
         return null;
     }
 
     @Override
-    public SubAccount executeNew( @Nonnull Object request,
-                                  @Nullable Map<String, Object> parameters,
-                                  @Nullable Locale locale )
-            throws IOException
+    public DeputyAccount executeNew( @Nonnull Object request,
+                                     @Nullable Map<String, Object> parameters,
+                                     @Nullable Locale locale )
     {
         return null;
     }
 
     @Override
-    public Object prepareUpdate( @Nonnull SubAccount resource,
+    public Object prepareUpdate( @Nonnull DeputyAccount resource,
                                  @Nonnull Identifier identifier,
                                  @Nullable MediaProvider provider )
             throws IOException

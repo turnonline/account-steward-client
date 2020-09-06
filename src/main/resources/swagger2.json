@@ -1385,9 +1385,9 @@
                 "tags": [
                     "Deputy Accounts"
                 ],
-                "summary": "Sub account list retrieval",
-                "description": "Retrieve sub accounts filtered with given criteria that belongs to the parent account.",
-                "operationId": "getSubAccounts",
+                "summary": "Deputy account list retrieval",
+                "description": "Retrieve deputy accounts filtered with given criteria that belongs to the parent account.",
+                "operationId": "getDeputyAccounts",
                 "produces": [
                     "application/json"
                 ],
@@ -1413,9 +1413,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "The list of sub accounts matching given criteria.",
+                        "description": "The list of deputy accounts matching given criteria.",
                         "schema": {
-                            "$ref": "#/definitions/SubAccountCollection"
+                            "$ref": "#/definitions/DeputyAccountCollection"
                         }
                     },
                     "401": {
@@ -1425,7 +1425,7 @@
                         }
                     },
                     "404": {
-                        "description": "The error when client tries to retrieve a sub account but main account for given login email doesn’t exist.",
+                        "description": "The error when client tries to retrieve a deputy account but main account for given login email doesn’t exist.",
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -1453,9 +1453,9 @@
                 "tags": [
                     "Deputy Accounts"
                 ],
-                "summary": "Create a sub account",
-                "description": "Creates a new sub account to be associated to the parent account. User can sign in with this newly created sub account and work as with the main account however account will behave based on the role.",
-                "operationId": "createSubAccount",
+                "summary": "Create a deputy account",
+                "description": "Creates a new deputy account to be associated to the parent account. User can sign in with this newly created Deputy account and work as with the main account however account will behave based on the role.",
+                "operationId": "createDeputyAccount",
                 "consumes": [
                     "application/json"
                 ],
@@ -1468,13 +1468,13 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/SubAccount"
+                            "$ref": "#/definitions/DeputyAccount"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "The full main account that represents just created sub account.",
+                        "description": "The full main account that represents just created deputy account.",
                         "schema": {
                             "$ref": "#/definitions/Account"
                         }
@@ -1492,7 +1492,7 @@
                         }
                     },
                     "404": {
-                        "description": "The error when client tries to create a sub account but main account for given login email doesn’t exist.",
+                        "description": "The error when client tries to create a deputy account but main account for given login email doesn’t exist.",
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -1527,23 +1527,23 @@
                 }
             ]
         },
-        "/v1/accounts/{login_id}/subs/{sub_email}": {
+        "/v1/accounts/{login_id}/subs/{deputy_email}": {
             "get": {
                 "tags": [
                     "Deputy Accounts"
                 ],
-                "summary": "Return the sub account",
-                "description": "Returns the sub account identified by the main account and sub email.",
-                "operationId": "getSubAccount",
+                "summary": "Return the deputy account",
+                "description": "Returns the deputy account identified by the main account and deputy email.",
+                "operationId": "getDeputyAccount",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": "Sub account response for given main account email and sub email.",
+                        "description": "Deputy account response for given main account email and deputy email.",
                         "schema": {
-                            "$ref": "#/definitions/SubAccount"
+                            "$ref": "#/definitions/DeputyAccount"
                         }
                     },
                     "401": {
@@ -1553,7 +1553,7 @@
                         }
                     },
                     "404": {
-                        "description": "The error when client tries to retrieve a sub account but main account for given login email or target sub account doesn’t exist.",
+                        "description": "The error when client tries to retrieve a deputy account but main account for given login email or target Deputy account doesn’t exist.",
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -1581,8 +1581,8 @@
                 "tags": [
                     "Deputy Accounts"
                 ],
-                "summary": "Update the sub account",
-                "operationId": "updateSubAccount",
+                "summary": "Update the deputy account",
+                "operationId": "updateDeputyAccount",
                 "consumes": [
                     "application/json"
                 ],
@@ -1595,13 +1595,13 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/SubAccount"
+                            "$ref": "#/definitions/DeputyAccount"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "The full main account that represents updated sub account.",
+                        "description": "The full main account that represents updated deputy account.",
                         "schema": {
                             "$ref": "#/definitions/Account"
                         }
@@ -1619,7 +1619,7 @@
                         }
                     },
                     "404": {
-                        "description": "The error when client tries to update a sub account but main account for given login email or target sub account doesn’t exist.",
+                        "description": "The error when client tries to update a deputy account but main account for given login email or target Deputy account doesn’t exist.",
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -1647,15 +1647,15 @@
                 "tags": [
                     "Deputy Accounts"
                 ],
-                "summary": "Delete the sub account",
-                "operationId": "deleteSubAccount",
+                "summary": "Delete the deputy account",
+                "operationId": "deleteDeputyAccount",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [],
                 "responses": {
                     "204": {
-                        "description": "The confirmation, the sub account has been deleted."
+                        "description": "The confirmation, the deputy account has been deleted."
                     },
                     "401": {
                         "description": "The error when the authentication credential fails.",
@@ -1664,7 +1664,7 @@
                         }
                     },
                     "404": {
-                        "description": "The error when client tries to delete a sub account but main account for given login email or target sub account doesn’t exist.",
+                        "description": "The error when client tries to delete a deputy account but main account for given login email or target deputy account doesn’t exist.",
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -1698,11 +1698,11 @@
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 },
                 {
-                    "name": "sub_email",
+                    "name": "deputy_email",
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The email as an identification of the sub account."
+                    "description": "The email as an identification of the deputy account."
                 }
             ]
         },
@@ -2012,7 +2012,7 @@
                 },
                 "firstName": {
                     "type": "string",
-                    "description": "The personal / sub account, person first name."
+                    "description": "The personal / deputy account, person first name."
                 },
                 "hasPostalAddress": {
                     "type": "boolean",
@@ -2034,7 +2034,7 @@
                 },
                 "lastName": {
                     "type": "string",
-                    "description": "The personal / sub account, person last name."
+                    "description": "The personal / deputy account, person last name."
                 },
                 "locale": {
                     "type": "string",
@@ -2042,7 +2042,7 @@
                 },
                 "middleName": {
                     "type": "string",
-                    "description": "The personal / sub account, person middle name."
+                    "description": "The personal / deputy account, person middle name."
                 },
                 "modificationDate": {
                     "type": "string",
@@ -2059,7 +2059,7 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "The personal / sub account, person name prefix."
+                    "description": "The personal / deputy account, person name prefix."
                 },
                 "publicContact": {
                     "description": "The public contact of the account, might be publicly available.",
@@ -2076,7 +2076,7 @@
                 },
                 "suffix": {
                     "type": "string",
-                    "description": "The personal / sub account, person name suffix."
+                    "description": "The personal / deputy account, person name suffix."
                 },
                 "zoneId": {
                     "type": "string",
@@ -2613,6 +2613,64 @@
                 }
             }
         },
+        "DeputyAccount": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email associated with the deputy account."
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "The first name of the person with access to the parent account."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "The last name of the person with access to the parent account."
+                },
+                "locale": {
+                    "type": "string",
+                    "description": "The preferred language of the associated account. ISO 639 alpha-2 or alpha-3 language code. If not configured the value from the parent account will be set."
+                },
+                "middleName": {
+                    "type": "string",
+                    "description": "The middle name of the person with access to the parent account."
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "The name prefix."
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role of the user that logs in with associated email.",
+                    "default": "DEPUTY_STANDARD",
+                    "enum": [
+                        "DEPUTY_STANDARD",
+                        "DEPUTY_SELLER"
+                    ]
+                },
+                "suffix": {
+                    "type": "string",
+                    "description": "The name suffix."
+                }
+            },
+            "description": "The definition of the associated email to the main account. The deputy accounts are available only for company accounts."
+        },
+        "DeputyAccountCollection": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "description": "Deputy account collection wrapper.",
+                    "items": {
+                        "$ref": "#/definitions/DeputyAccount"
+                    }
+                }
+            }
+        },
         "Image": {
             "type": "object",
             "required": [
@@ -2819,64 +2877,6 @@
                 }
             },
             "description": "If security code is missing in the subscription request, a verification link (incl. security code) will be sent to the contact email to validate newsletter subscription. Until validated the email will be added as a new contact however unsubscribed from the newsletter. Generated security code will be kept and associated with contact email.\n\nIf modification date is being provided the subscription request will be accepted only if this modification date is after the time kept by the service (last wins). Useful if requests are processed asynchronously. If not provided, the subscription requests will be processed in order as they comes."
-        },
-        "SubAccount": {
-            "type": "object",
-            "required": [
-                "email"
-            ],
-            "properties": {
-                "email": {
-                    "type": "string",
-                    "description": "The email associated with the account."
-                },
-                "firstName": {
-                    "type": "string",
-                    "description": "The first name of the person with access to the parent account."
-                },
-                "lastName": {
-                    "type": "string",
-                    "description": "The last name of the person with access to the parent account."
-                },
-                "locale": {
-                    "type": "string",
-                    "description": "The preferred language of the associated account. ISO 639 alpha-2 or alpha-3 language code. If not configured the value from the parent account will be set."
-                },
-                "middleName": {
-                    "type": "string",
-                    "description": "The middle name of the person with access to the parent account."
-                },
-                "prefix": {
-                    "type": "string",
-                    "description": "The name prefix."
-                },
-                "role": {
-                    "type": "string",
-                    "description": "The role of the user that logs in with associated email.",
-                    "default": "DEPUTY_STANDARD",
-                    "enum": [
-                        "DEPUTY_STANDARD",
-                        "DEPUTY_SELLER"
-                    ]
-                },
-                "suffix": {
-                    "type": "string",
-                    "description": "The name suffix."
-                }
-            },
-            "description": "The definition of the associated email to the main account. The sub accounts are available only for company accounts."
-        },
-        "SubAccountCollection": {
-            "type": "object",
-            "properties": {
-                "items": {
-                    "type": "array",
-                    "description": "Sub account collection wrapper.",
-                    "items": {
-                        "$ref": "#/definitions/SubAccount"
-                    }
-                }
-            }
         },
         "Uri": {
             "type": "object",

@@ -20,6 +20,7 @@ package biz.turnonline.ecosystem.steward.facade;
 import biz.turnonline.ecosystem.steward.facade.adaptee.AccountAdaptee;
 import biz.turnonline.ecosystem.steward.facade.adaptee.ContactAdaptee;
 import biz.turnonline.ecosystem.steward.facade.adaptee.CountryAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.DeputyAccountAdaptee;
 import biz.turnonline.ecosystem.steward.facade.adaptee.DomainAdaptee;
 import biz.turnonline.ecosystem.steward.facade.adaptee.DomainUriAdaptee;
 import biz.turnonline.ecosystem.steward.facade.adaptee.InvoicingAdaptee;
@@ -28,6 +29,7 @@ import biz.turnonline.ecosystem.steward.facade.adaptee.NewsletterAdaptee;
 import biz.turnonline.ecosystem.steward.model.Account;
 import biz.turnonline.ecosystem.steward.model.ContactCard;
 import biz.turnonline.ecosystem.steward.model.Country;
+import biz.turnonline.ecosystem.steward.model.DeputyAccount;
 import biz.turnonline.ecosystem.steward.model.Domain;
 import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import biz.turnonline.ecosystem.steward.model.LegalForm;
@@ -77,6 +79,31 @@ public class AccountStewardAdapterModule
         bind( new TypeLiteral<NewExecutorAdaptee<Account>>()
         {
         } ).to( AccountAdaptee.class );
+
+        // Deputy account adaptee
+        bind( new TypeLiteral<GetExecutorAdaptee<DeputyAccount>>()
+        {
+        } ).to( DeputyAccountAdaptee.class );
+
+        bind( new TypeLiteral<ListExecutorAdaptee<DeputyAccount>>()
+        {
+        } ).to( DeputyAccountAdaptee.class );
+
+        bind( new TypeLiteral<InsertExecutorAdaptee<DeputyAccount>>()
+        {
+        } ).to( DeputyAccountAdaptee.class );
+
+        bind( new TypeLiteral<UpdateExecutorAdaptee<DeputyAccount>>()
+        {
+        } ).to( DeputyAccountAdaptee.class );
+
+        bind( new TypeLiteral<DeleteExecutorAdaptee<DeputyAccount>>()
+        {
+        } ).to( DeputyAccountAdaptee.class );
+
+        bind( new TypeLiteral<NewExecutorAdaptee<DeputyAccount>>()
+        {
+        } ).to( DeputyAccountAdaptee.class );
 
         // invoicing config adaptee
         bind( new TypeLiteral<GetExecutorAdaptee<InvoicingConfig>>()
