@@ -1991,7 +1991,7 @@
             "properties": {
                 "audience": {
                     "type": "string",
-                    "description": "The Seller audience unique identification.\n\nUsers of Seller's audience are separated from each other. The user identified by login email address within one audience is a different user within another audience even with the same login email. Those users have different Account.IDs.\n\nTaken from the JWT token, encoded as 'aud'.\n\nHowever, there is a one exception. A business (SELLER) account can support more than one customer project (for example Google Cloud Project, Firebase) for the same account where single customer project is represented by an audience. See 'supportedAudiences' property."
+                    "description": "The SELLER's primary audience unique identification of the project, where to get TurnOnline.biz Ecosystem messages via Pub/Sub topics.\n\nUsers of Seller's audience are separated from each other. The user identified by login email address within one audience is a different user within another audience even with the same login email. Those users have different Account.IDs.\n\nTaken from the JWT token, encoded as 'aud'.\n\nHowever, there is a one exception. A business (SELLER) account can support more than one customer project (for example Google Cloud Project, Firebase) for the same account where single customer project is represented by an audience. See 'supportedAudiences' property."
                 },
                 "business": {
                     "description": "The business account details. If the property \"company\" is false, the posted values will be stored anyway for further use, however account is still being considered as a personal account.",
