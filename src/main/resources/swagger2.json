@@ -2158,6 +2158,13 @@
                     "type": "boolean",
                     "description": "The boolean indication whether company is registered as VAT payer. The missing value or false means company it's not a VAT payer.",
                     "default": false
+                },
+                "why": {
+                    "type": "object",
+                    "description": "Description that should convince an user to pin this business represented as a store to its board. Its a map where the key is the language and value is a description in that language.",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 }
             }
         },
