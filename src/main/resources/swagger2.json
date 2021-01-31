@@ -2161,7 +2161,7 @@
                 },
                 "why": {
                     "type": "object",
-                    "description": "Description that should convince an user to pin this business represented as a store to its board. Its a map where the key is the language and value is a description in that language.",
+                    "description": "Description that should convince an user to pin this business represented as a store to its board. Its a map where the key is the language and value is a description in that language. The max length of the description is 120 characters, otherwise bad request will be returned.",
                     "additionalProperties": {
                         "type": "string"
                     }
