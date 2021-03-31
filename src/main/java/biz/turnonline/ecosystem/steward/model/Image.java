@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for Image.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class Image
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = -446269237301855912L;
 
     /**
      * The value may be {@code null}.
@@ -79,17 +82,4 @@ public final class Image
         this.storageName = storageName;
         return this;
     }
-
-    @Override
-    public Image set( String fieldName, Object value )
-    {
-        return ( Image ) super.set( fieldName, value );
-    }
-
-    @Override
-    public Image clone()
-    {
-        return ( Image ) super.clone();
-    }
-
 }

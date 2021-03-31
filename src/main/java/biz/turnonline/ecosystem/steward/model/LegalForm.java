@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for LegalForm.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class LegalForm
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 1842152202383665936L;
 
     /**
      * The value may be {@code null}.
@@ -125,17 +128,4 @@ public final class LegalForm
         this.version = version;
         return this;
     }
-
-    @Override
-    public LegalForm set( String fieldName, Object value )
-    {
-        return ( LegalForm ) super.set( fieldName, value );
-    }
-
-    @Override
-    public LegalForm clone()
-    {
-        return ( LegalForm ) super.clone();
-    }
-
 }

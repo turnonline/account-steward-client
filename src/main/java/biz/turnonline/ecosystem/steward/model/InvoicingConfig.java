@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for InvoicingConfig.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class InvoicingConfig
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 3288129099507362779L;
 
     /**
      * The value may be {@code null}.
@@ -240,17 +243,4 @@ public final class InvoicingConfig
         this.stamp = stamp;
         return this;
     }
-
-    @Override
-    public InvoicingConfig set( String fieldName, Object value )
-    {
-        return ( InvoicingConfig ) super.set( fieldName, value );
-    }
-
-    @Override
-    public InvoicingConfig clone()
-    {
-        return ( InvoicingConfig ) super.clone();
-    }
-
 }

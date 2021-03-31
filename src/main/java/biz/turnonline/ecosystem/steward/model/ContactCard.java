@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for ContactCard.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class ContactCard
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = -5872655879690923362L;
 
     /**
      * The value may be {@code null}.
@@ -702,17 +705,4 @@ public final class ContactCard
         this.vatPayer = vatPayer;
         return this;
     }
-
-    @Override
-    public ContactCard set( String fieldName, Object value )
-    {
-        return ( ContactCard ) super.set( fieldName, value );
-    }
-
-    @Override
-    public ContactCard clone()
-    {
-        return ( ContactCard ) super.clone();
-    }
-
 }

@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for DomainCollection.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class DomainCollection
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = -260853286126912459L;
 
     static
     {
@@ -63,17 +66,4 @@ public final class DomainCollection
         this.items = items;
         return this;
     }
-
-    @Override
-    public DomainCollection set( String fieldName, Object value )
-    {
-        return ( DomainCollection ) super.set( fieldName, value );
-    }
-
-    @Override
-    public DomainCollection clone()
-    {
-        return ( DomainCollection ) super.clone();
-    }
-
 }

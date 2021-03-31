@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for ContactCardCollection.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class ContactCardCollection
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 5096207580039894324L;
 
     static
     {
@@ -63,17 +66,4 @@ public final class ContactCardCollection
         this.items = items;
         return this;
     }
-
-    @Override
-    public ContactCardCollection set( String fieldName, Object value )
-    {
-        return ( ContactCardCollection ) super.set( fieldName, value );
-    }
-
-    @Override
-    public ContactCardCollection clone()
-    {
-        return ( ContactCardCollection ) super.clone();
-    }
-
 }

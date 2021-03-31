@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for NewsletterSubscription.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class NewsletterSubscription
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = -3349509202155458861L;
 
     /**
      * The value may be {@code null}.
@@ -102,17 +105,4 @@ public final class NewsletterSubscription
         this.subscribe = subscribe;
         return this;
     }
-
-    @Override
-    public NewsletterSubscription set( String fieldName, Object value )
-    {
-        return ( NewsletterSubscription ) super.set( fieldName, value );
-    }
-
-    @Override
-    public NewsletterSubscription clone()
-    {
-        return ( NewsletterSubscription ) super.clone();
-    }
-
 }

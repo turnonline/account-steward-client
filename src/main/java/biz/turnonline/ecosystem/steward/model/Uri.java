@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for Uri.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class Uri
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 700880708719173577L;
 
     /**
      * The value may be {@code null}.
@@ -56,17 +59,4 @@ public final class Uri
         this.uri = uri;
         return this;
     }
-
-    @Override
-    public Uri set( String fieldName, Object value )
-    {
-        return ( Uri ) super.set( fieldName, value );
-    }
-
-    @Override
-    public Uri clone()
-    {
-        return ( Uri ) super.clone();
-    }
-
 }

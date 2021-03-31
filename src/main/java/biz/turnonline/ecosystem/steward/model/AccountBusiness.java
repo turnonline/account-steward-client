@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for AccountBusiness.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class AccountBusiness
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 5375861644044193991L;
 
     /**
      * The value may be {@code null}.
@@ -378,17 +381,4 @@ public final class AccountBusiness
         this.why = why;
         return this;
     }
-
-    @Override
-    public AccountBusiness set( String fieldName, Object value )
-    {
-        return ( AccountBusiness ) super.set( fieldName, value );
-    }
-
-    @Override
-    public AccountBusiness clone()
-    {
-        return ( AccountBusiness ) super.clone();
-    }
-
 }

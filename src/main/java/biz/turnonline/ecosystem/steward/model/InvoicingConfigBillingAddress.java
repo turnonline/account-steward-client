@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for InvoicingConfigBillingAddress.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class InvoicingConfigBillingAddress
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 4646994186796352986L;
 
     /**
      * The value may be {@code null}.
@@ -194,17 +197,4 @@ public final class InvoicingConfigBillingAddress
         this.street = street;
         return this;
     }
-
-    @Override
-    public InvoicingConfigBillingAddress set( String fieldName, Object value )
-    {
-        return ( InvoicingConfigBillingAddress ) super.set( fieldName, value );
-    }
-
-    @Override
-    public InvoicingConfigBillingAddress clone()
-    {
-        return ( InvoicingConfigBillingAddress ) super.clone();
-    }
-
 }

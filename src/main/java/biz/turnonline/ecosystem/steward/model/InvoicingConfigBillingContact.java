@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for InvoicingConfigBillingContact.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class InvoicingConfigBillingContact
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 3718516147616811780L;
 
     /**
      * The value may be {@code null}.
@@ -194,17 +197,4 @@ public final class InvoicingConfigBillingContact
         this.suffix = suffix;
         return this;
     }
-
-    @Override
-    public InvoicingConfigBillingContact set( String fieldName, Object value )
-    {
-        return ( InvoicingConfigBillingContact ) super.set( fieldName, value );
-    }
-
-    @Override
-    public InvoicingConfigBillingContact clone()
-    {
-        return ( InvoicingConfigBillingContact ) super.clone();
-    }
-
 }

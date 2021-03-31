@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for AccountPublicContact.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class AccountPublicContact
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = -7915149441632947525L;
 
     /**
      * The value may be {@code null}.
@@ -125,17 +128,4 @@ public final class AccountPublicContact
         this.website = website;
         return this;
     }
-
-    @Override
-    public AccountPublicContact set( String fieldName, Object value )
-    {
-        return ( AccountPublicContact ) super.set( fieldName, value );
-    }
-
-    @Override
-    public AccountPublicContact clone()
-    {
-        return ( AccountPublicContact ) super.clone();
-    }
-
 }

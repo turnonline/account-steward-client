@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for CountryCollection.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class CountryCollection
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 5064094292781160223L;
 
     static
     {
@@ -63,17 +66,4 @@ public final class CountryCollection
         this.items = items;
         return this;
     }
-
-    @Override
-    public CountryCollection set( String fieldName, Object value )
-    {
-        return ( CountryCollection ) super.set( fieldName, value );
-    }
-
-    @Override
-    public CountryCollection clone()
-    {
-        return ( CountryCollection ) super.clone();
-    }
-
 }

@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for NewsletterResponse.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class NewsletterResponse
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 6079726454067794998L;
 
     /**
      * The value may be {@code null}.
@@ -56,17 +59,4 @@ public final class NewsletterResponse
         this.successful = successful;
         return this;
     }
-
-    @Override
-    public NewsletterResponse set( String fieldName, Object value )
-    {
-        return ( NewsletterResponse ) super.set( fieldName, value );
-    }
-
-    @Override
-    public NewsletterResponse clone()
-    {
-        return ( NewsletterResponse ) super.clone();
-    }
-
 }

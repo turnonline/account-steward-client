@@ -21,6 +21,7 @@ package biz.turnonline.ecosystem.steward.model;
 import biz.turnonline.ecosystem.steward.facade.Domicile;
 import com.google.common.base.Strings;
 
+import java.io.Serializable;
 import java.util.Currency;
 
 /**
@@ -36,8 +37,9 @@ import java.util.Currency;
  */
 @SuppressWarnings( "javadoc" )
 public final class Account
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = -3669817503736333911L;
 
     /**
      * The value may be {@code null}.
@@ -590,17 +592,4 @@ public final class Account
         this.zoneId = zoneId;
         return this;
     }
-
-    @Override
-    public Account set( String fieldName, Object value )
-    {
-        return ( Account ) super.set( fieldName, value );
-    }
-
-    @Override
-    public Account clone()
-    {
-        return ( Account ) super.clone();
-    }
-
 }

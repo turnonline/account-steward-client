@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for Domain.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class Domain
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 1304533659003112886L;
 
     /**
      * The value may be {@code null}.
@@ -194,17 +197,4 @@ public final class Domain
         this.verified = verified;
         return this;
     }
-
-    @Override
-    public Domain set( String fieldName, Object value )
-    {
-        return ( Domain ) super.set( fieldName, value );
-    }
-
-    @Override
-    public Domain clone()
-    {
-        return ( Domain ) super.clone();
-    }
-
 }

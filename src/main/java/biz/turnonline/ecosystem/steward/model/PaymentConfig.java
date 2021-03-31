@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for PaymentConfig.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class PaymentConfig
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 5953716489788708521L;
 
     /**
      * The value may be {@code null}.
@@ -56,17 +59,4 @@ public final class PaymentConfig
         this.stripe = stripe;
         return this;
     }
-
-    @Override
-    public PaymentConfig set( String fieldName, Object value )
-    {
-        return ( PaymentConfig ) super.set( fieldName, value );
-    }
-
-    @Override
-    public PaymentConfig clone()
-    {
-        return ( PaymentConfig ) super.clone();
-    }
-
 }

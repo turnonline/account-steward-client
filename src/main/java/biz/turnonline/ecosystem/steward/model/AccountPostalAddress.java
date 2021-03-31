@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for AccountPostalAddress.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class AccountPostalAddress
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = -5662766734081599927L;
 
     /**
      * The value may be {@code null}.
@@ -286,17 +289,4 @@ public final class AccountPostalAddress
         this.suffix = suffix;
         return this;
     }
-
-    @Override
-    public AccountPostalAddress set( String fieldName, Object value )
-    {
-        return ( AccountPostalAddress ) super.set( fieldName, value );
-    }
-
-    @Override
-    public AccountPostalAddress clone()
-    {
-        return ( AccountPostalAddress ) super.clone();
-    }
-
 }

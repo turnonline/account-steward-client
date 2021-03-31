@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for Stripe.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class Stripe
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 2386618353506052760L;
 
     /**
      * The value may be {@code null}.
@@ -56,17 +59,4 @@ public final class Stripe
         this.account = account;
         return this;
     }
-
-    @Override
-    public Stripe set( String fieldName, Object value )
-    {
-        return ( Stripe ) super.set( fieldName, value );
-    }
-
-    @Override
-    public Stripe clone()
-    {
-        return ( Stripe ) super.clone();
-    }
-
 }

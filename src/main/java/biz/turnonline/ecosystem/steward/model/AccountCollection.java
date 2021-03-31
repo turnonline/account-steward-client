@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for AccountCollection.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class AccountCollection
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = -8805893777783650134L;
 
     static
     {
@@ -63,17 +66,4 @@ public final class AccountCollection
         this.items = items;
         return this;
     }
-
-    @Override
-    public AccountCollection set( String fieldName, Object value )
-    {
-        return ( AccountCollection ) super.set( fieldName, value );
-    }
-
-    @Override
-    public AccountCollection clone()
-    {
-        return ( AccountCollection ) super.clone();
-    }
-
 }

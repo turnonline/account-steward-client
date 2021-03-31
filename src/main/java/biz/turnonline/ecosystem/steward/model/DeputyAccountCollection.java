@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.steward.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for DeputyAccountCollection.
  *
@@ -31,8 +33,9 @@ package biz.turnonline.ecosystem.steward.model;
  */
 @SuppressWarnings( "javadoc" )
 public final class DeputyAccountCollection
-        extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 8530731611795888139L;
 
     static
     {
@@ -63,17 +66,4 @@ public final class DeputyAccountCollection
         this.items = items;
         return this;
     }
-
-    @Override
-    public DeputyAccountCollection set( String fieldName, Object value )
-    {
-        return ( DeputyAccountCollection ) super.set( fieldName, value );
-    }
-
-    @Override
-    public DeputyAccountCollection clone()
-    {
-        return ( DeputyAccountCollection ) super.clone();
-    }
-
 }
