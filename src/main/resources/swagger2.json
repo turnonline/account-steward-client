@@ -37,7 +37,7 @@
                     "Account Management"
                 ],
                 "summary": "Accounts search",
-                "description": "Retrieve accounts filtered with given criteria.",
+                "description": "Retrieve accounts filtered with given criteria. This API is available for super admin only.",
                 "operationId": "getAccounts",
                 "produces": [
                     "application/json"
