@@ -1991,7 +1991,7 @@
             "properties": {
                 "audience": {
                     "type": "string",
-                    "description": "The SELLER's primary audience unique identification of the project, where to get TurnOnline.biz Ecosystem messages via Pub/Sub topics.\n\nUsers of Seller's audience are separated from each other. The user identified by login email address within one audience is a different user within another audience even with the same login email. Those users have different Account.IDs.\n\nTaken from the JWT token, encoded as 'aud'.\n\nHowever, there is a one exception. A business (SELLER) account can support more than one customer project (for example Google Cloud Project, Firebase) for the same account where single customer project is represented by an audience. See 'supportedAudiences' property."
+                    "description": "The primary audience (GCP project ID) unique identification. Target project ID of the Pub/Sub topics for messaging.\n\nUsers of seller's audience are separated from each other. The user identified by email address within one audience is a different user within another audience even with the same login email. Those users have different Account.IDs.\n\nTaken from the JWT token, encoded as 'aud'.\n\nHowever, there is an exception. Account can support more than one GCP project for the same account where a single GCP project is represented by an audience. In this case the account owner must explicitly give a consent. See 'linkedAudiences' property."
                 },
                 "business": {
                     "description": "The business account details. If the property \"company\" is false, the posted values will be stored anyway for further use, however account is still being considered as a personal account.",
@@ -2082,10 +2082,10 @@
                     "type": "string",
                     "description": "The personal / deputy account, person name suffix."
                 },
-                "supportedAudiences": {
-                    "type": "array",
-                    "description": "A business (SELLER) account can support more than one audience for the same account. This is the list of supported audiences incl. the main audience.",
-                    "items": {
+                "linkedAudiences": {
+                    "type": "object",
+                    "description": "An account can support more than one audience for the same account. This is the list of all linked audiences incl. the primary audience.",
+                    "additionalProperties": {
                         "type": "string"
                     }
                 },
