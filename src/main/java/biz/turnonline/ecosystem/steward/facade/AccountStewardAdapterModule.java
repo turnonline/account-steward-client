@@ -26,6 +26,7 @@ import biz.turnonline.ecosystem.steward.facade.adaptee.DomainUriAdaptee;
 import biz.turnonline.ecosystem.steward.facade.adaptee.InvoicingAdaptee;
 import biz.turnonline.ecosystem.steward.facade.adaptee.LegalFormAdaptee;
 import biz.turnonline.ecosystem.steward.facade.adaptee.NewsletterAdaptee;
+import biz.turnonline.ecosystem.steward.facade.adaptee.PickupPointAdaptee;
 import biz.turnonline.ecosystem.steward.model.Account;
 import biz.turnonline.ecosystem.steward.model.ContactCard;
 import biz.turnonline.ecosystem.steward.model.Country;
@@ -34,6 +35,7 @@ import biz.turnonline.ecosystem.steward.model.Domain;
 import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import biz.turnonline.ecosystem.steward.model.LegalForm;
 import biz.turnonline.ecosystem.steward.model.NewsletterSubscription;
+import biz.turnonline.ecosystem.steward.model.PickupPoint;
 import biz.turnonline.ecosystem.steward.model.Uri;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
@@ -79,6 +81,10 @@ public class AccountStewardAdapterModule
         bind( new TypeLiteral<NewExecutorAdaptee<Account>>()
         {
         } ).to( AccountAdaptee.class );
+
+        bind( new TypeLiteral<ListExecutorAdaptee<PickupPoint>>()
+        {
+        } ).to( PickupPointAdaptee.class );
 
         // Deputy account adaptee
         bind( new TypeLiteral<GetExecutorAdaptee<DeputyAccount>>()
