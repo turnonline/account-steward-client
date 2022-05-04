@@ -1380,6 +1380,67 @@
                 }
             ]
         },
+        "/v1/accounts/{login_id}/pickup-points": {
+            "get": {
+                "tags": [
+                    "Account Management"
+                ],
+                "summary": "The list of pickup points",
+                "description": "The list of the nearest pickup points to deliver a package",
+                "operationId": "getPickupPoints",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The list of the nearest pickup points",
+                        "schema": {
+                            "$ref": "#/definitions/PickupPointCollection"
+                        }
+                    },
+                    "401": {
+                        "description": "The error when the authentication credential fails.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The error when client tries to retrieve pickup-points of an account that doesn't exist.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "It's a failure of the server. The client can repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "503": {
+                        "description": "The service is unavailable or the server has timed out processing of the request. The client may repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "firebase-a9a2a51a": []
+                    }
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "login_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "description": "The TurnOnline.biz Ecosystem account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
+                }
+            ]
+        },
         "/v1/accounts/{login_id}/subs": {
             "get": {
                 "tags": [
@@ -2004,7 +2065,7 @@
                 },
                 "contactEmail": {
                     "type": "string",
-                    "description": "The email address considered as a contact email used for notification purposes related to this account. Supports comma separated list. If it's not provided the account's email will be used by default."
+                    "description": "The email address considered as a contact email used for notification purposes related to this account. If it's not provided the account's email will be used by default."
                 },
                 "email": {
                     "type": "string",
@@ -2313,7 +2374,7 @@
                 },
                 "contactEmail": {
                     "type": "string",
-                    "description": "The contact email used either for notification purposes or for dealing with a potential issues with order. Supports comma separated list."
+                    "description": "The contact email used either for notification purposes or for dealing with a potential issues with order."
                 },
                 "contactPhone": {
                     "type": "string",
@@ -2893,6 +2954,45 @@
             },
             "description": "If security code is missing in the subscription request, a verification link (incl. security code) will be sent to the contact email to validate newsletter subscription. Until validated the email will be added as a new contact however unsubscribed from the newsletter. Generated security code will be kept and associated with contact email.\n\nIf modification date is being provided the subscription request will be accepted only if this modification date is after the time kept by the service (last wins). Useful if requests are processed asynchronously. If not provided, the subscription requests will be processed in order as they comes."
         },
+        "OpeningHoursExceptionDays": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "description": "Formatted string date."
+                },
+                "to": {
+                    "type": "string",
+                    "description": "Formatted string date."
+                }
+            }
+        },
+        "OpeningHoursRegular": {
+            "type": "object",
+            "properties": {
+                "friday": {
+                    "type": "string"
+                },
+                "monday": {
+                    "type": "string"
+                },
+                "saturday": {
+                    "type": "string"
+                },
+                "sunday": {
+                    "type": "string"
+                },
+                "thursday": {
+                    "type": "string"
+                },
+                "tuesday": {
+                    "type": "string"
+                },
+                "wednesday": {
+                    "type": "string"
+                }
+            }
+        },
         "PaymentConfig": {
             "type": "object",
             "description": "Payment processors configuration",
@@ -2902,6 +3002,144 @@
                     "$ref": "#/definitions/Stripe"
                 }
             }
+        },
+        "PickupPoint": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "description": "The pickup point address details.",
+                    "$ref": "#/definitions/PickupPointAddress"
+                },
+                "coordinates": {
+                    "description": "The pickup point address latitude and longitude coordinates.",
+                    "$ref": "#/definitions/PickupPointCoordinates"
+                },
+                "directions": {
+                    "description": "Directions to get to the pickup point.",
+                    "$ref": "#/definitions/PickupPointDirections"
+                },
+                "distanceFromOrigin": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Distance from the postal address location by latitude & longitude in metres."
+                },
+                "externalId": {
+                    "type": "string",
+                    "description": "The pickup point unique identification."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The shop name."
+                },
+                "openingHours": {
+                    "description": "Opening hours incl. the exception days of the pickup point.",
+                    "$ref": "#/definitions/PickupPointOpeningHours"
+                },
+                "photos": {
+                    "description": "Photos URLs of the pickup point.",
+                    "$ref": "#/definitions/PickupPointPhotos"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The pickup point details web page."
+                }
+            },
+            "description": "The pickup point address description, the place where the client will pick up the package."
+        },
+        "PickupPointAddress": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "description": "The pickup point city."
+                },
+                "country": {
+                    "type": "string",
+                    "description": "The pickup point country code."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The pickup point inline address."
+                },
+                "street": {
+                    "type": "string",
+                    "description": "The pickup point street."
+                },
+                "zip": {
+                    "type": "string",
+                    "description": "The pickup point zip."
+                }
+            },
+            "description": "The pickup point address details."
+        },
+        "PickupPointCollection": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PickupPoint"
+                    }
+                }
+            }
+        },
+        "PickupPointCoordinates": {
+            "type": "object",
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The pickup point latitude."
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The pickup point longitude."
+                }
+            },
+            "description": "The pickup point address latitude and longitude coordinates."
+        },
+        "PickupPointDirections": {
+            "type": "object",
+            "properties": {
+                "car": {
+                    "type": "string"
+                },
+                "publicTransport": {
+                    "type": "string"
+                },
+                "walk": {
+                    "type": "string"
+                }
+            },
+            "description": "Directions to get to the pickup point."
+        },
+        "PickupPointOpeningHours": {
+            "type": "object",
+            "properties": {
+                "exceptionDays": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OpeningHoursExceptionDays"
+                    }
+                },
+                "regular": {
+                    "$ref": "#/definitions/OpeningHoursRegular"
+                }
+            },
+            "description": "Opening hours incl. the exception days of the pickup point."
+        },
+        "PickupPointPhotos": {
+            "type": "object",
+            "properties": {
+                "normal": {
+                    "type": "string"
+                },
+                "thumbnail": {
+                    "type": "string"
+                }
+            },
+            "description": "Photos URLs of the pickup point."
         },
         "Stripe": {
             "type": "object",
