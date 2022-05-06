@@ -36,6 +36,7 @@ import biz.turnonline.ecosystem.steward.model.InvoicingConfig;
 import biz.turnonline.ecosystem.steward.model.LegalForm;
 import biz.turnonline.ecosystem.steward.model.NewsletterSubscription;
 import biz.turnonline.ecosystem.steward.model.PickupPoint;
+import biz.turnonline.ecosystem.steward.model.PreferredPickupPoint;
 import biz.turnonline.ecosystem.steward.model.Uri;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
@@ -83,6 +84,10 @@ public class AccountStewardAdapterModule
         } ).to( AccountAdaptee.class );
 
         bind( new TypeLiteral<ListExecutorAdaptee<PickupPoint>>()
+        {
+        } ).to( PickupPointAdaptee.class );
+
+        bind( new TypeLiteral<UpdateExecutorAdaptee<PreferredPickupPoint>>()
         {
         } ).to( PickupPointAdaptee.class );
 

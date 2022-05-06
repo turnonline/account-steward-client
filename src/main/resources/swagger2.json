@@ -332,7 +332,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 }
             ]
@@ -399,7 +399,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 },
                 {
@@ -561,7 +561,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 }
             ]
@@ -735,7 +735,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 },
                 {
@@ -821,7 +821,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 },
                 {
@@ -991,7 +991,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 }
             ]
@@ -1077,7 +1077,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 },
                 {
@@ -1196,7 +1196,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 },
                 {
@@ -1375,7 +1375,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 }
             ]
@@ -1383,10 +1383,10 @@
         "/v1/accounts/{login_id}/pickup-points": {
             "get": {
                 "tags": [
-                    "Account Management"
+                    "Configuration"
                 ],
                 "summary": "The list of pickup points",
-                "description": "The list of the nearest pickup points to deliver a package",
+                "description": "The list of the nearest pickup points to the account postal address to deliver a package",
                 "operationId": "getPickupPoints",
                 "produces": [
                     "application/json"
@@ -1436,7 +1436,86 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
+                    "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
+                }
+            ]
+        },
+        "/v1/accounts/{login_id}/pickup-points/preferred": {
+            "put": {
+                "tags": [
+                    "Configuration"
+                ],
+                "summary": "Select the preferred pickup point",
+                "description": "Selects the preferred pickup point, the one that will be used for the delivery if not explicitly specified otherwise. It will also check the current status of the pickup-point including refreshing of the nearest pickup-points.\n\nThe preferred pickup point identified by given ID will be updated asynchronously if found. If not found, then the first value from the existing list will be taken.",
+                "operationId": "selectPickupPoint",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PreferredPickupPoint"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The selected pickup-point if found among the existing pickup-point list, otherwise returns empty message, however pickup point identified by given ID will be populated asynchronously if found.",
+                        "schema": {
+                            "$ref": "#/definitions/PickupPoint"
+                        }
+                    },
+                    "400": {
+                        "description": "The error indicates that client has made a request that server couldn't understand. The client should not repeat the request without modifications.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "The error when the authentication credential fails.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The error when client tries to select a pickup-point within account that doesn't exist or pickup-point identification is unknown.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "It's a failure of the server. The client can repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "503": {
+                        "description": "The service is unavailable or the server has timed out processing of the request. The client may repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "firebase-a9a2a51a": []
+                    }
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "login_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 }
             ]
@@ -1583,7 +1662,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 }
             ]
@@ -1755,7 +1834,7 @@
                     "in": "path",
                     "required": true,
                     "type": "string",
-                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the main account to work with.",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
                     "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
                 },
                 {
@@ -3147,6 +3226,24 @@
                 }
             },
             "description": "Photos URLs of the pickup point."
+        },
+        "PreferredPickupPoint": {
+            "type": "object",
+            "properties": {
+                "externalId": {
+                    "type": "string",
+                    "description": "The pickup-point unique identification for the selected shipping company."
+                },
+                "shipping": {
+                    "type": "string",
+                    "description": "Shipping company code, the one from the supported list.",
+                    "default": "ZASILKOVNA",
+                    "enum": [
+                        "ZASILKOVNA"
+                    ]
+                }
+            },
+            "description": "Preferred pickup-point identification."
         },
         "Stripe": {
             "type": "object",

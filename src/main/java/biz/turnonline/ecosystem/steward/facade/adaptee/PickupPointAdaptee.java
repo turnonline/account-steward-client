@@ -19,8 +19,11 @@ package biz.turnonline.ecosystem.steward.facade.adaptee;
 
 import biz.turnonline.ecosystem.steward.AccountSteward;
 import biz.turnonline.ecosystem.steward.model.PickupPoint;
+import biz.turnonline.ecosystem.steward.model.PreferredPickupPoint;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
+import org.ctoolkit.restapi.client.adaptee.MediaProvider;
+import org.ctoolkit.restapi.client.adaptee.UpdateExecutorAdaptee;
 import org.ctoolkit.restapi.client.adapter.AbstractGoogleClientAdaptee;
 
 import javax.annotation.Nonnull;
@@ -41,7 +44,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class PickupPointAdaptee
         extends AbstractGoogleClientAdaptee<AccountSteward>
-        implements ListExecutorAdaptee<PickupPoint>
+        implements ListExecutorAdaptee<PickupPoint>, UpdateExecutorAdaptee<PreferredPickupPoint>
 {
     @Inject
     public PickupPointAdaptee( Provider<AccountSteward> client )
@@ -71,5 +74,21 @@ public class PickupPointAdaptee
 
         fill( request, parameters );
         return list.execute().getItems();
+    }
+
+    @Override
+    public Object prepareUpdate( @Nonnull PreferredPickupPoint resource,
+                                 @Nonnull Identifier identifier,
+                                 @Nullable MediaProvider provider ) throws IOException
+    {
+        return client().accounts().pickup().preferred( identifier.getString(), resource );
+    }
+
+    @Override
+    public Object executeUpdate( @Nonnull Object request,
+                                 @Nullable Map<String, Object> parameters,
+                                 @Nullable Locale locale ) throws IOException
+    {
+        return execute( request, parameters );
     }
 }
