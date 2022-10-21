@@ -21,7 +21,7 @@ package biz.turnonline.ecosystem.steward.model;
 import java.io.Serializable;
 
 /**
- * Model definition for PaymentConfig.
+ * Model definition for PaymentConfigAcceptance.
  *
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the TurnOnline.biz Account Steward. For a detailed
@@ -31,54 +31,54 @@ import java.io.Serializable;
  *
  * @author Google, Inc.
  */
-public final class PaymentConfig
+public final class PaymentConfigAcceptance
         implements Serializable
 {
-    private static final long serialVersionUID = -5734235384940434295L;
+    private static final long serialVersionUID = 7792792602200414238L;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private PaymentConfigAcceptance acceptance;
+    private java.lang.String privacyPolicy;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private Stripe stripe;
+    private java.lang.String termsOfService;
 
     /**
      * @return value or {@code null} for none
      */
-    public PaymentConfigAcceptance getAcceptance()
+    public java.lang.String getPrivacyPolicy()
     {
-        return acceptance;
+        return privacyPolicy;
     }
 
     /**
-     * @param acceptance acceptance or {@code null} for none
+     * @param privacyPolicy privacyPolicy or {@code null} for none
      */
-    public PaymentConfig setAcceptance( PaymentConfigAcceptance acceptance )
+    public PaymentConfigAcceptance setPrivacyPolicy( java.lang.String privacyPolicy )
     {
-        this.acceptance = acceptance;
+        this.privacyPolicy = privacyPolicy;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public Stripe getStripe()
+    public java.lang.String getTermsOfService()
     {
-        return stripe;
+        return termsOfService;
     }
 
     /**
-     * @param stripe stripe or {@code null} for none
+     * @param termsOfService termsOfService or {@code null} for none
      */
-    public PaymentConfig setStripe( Stripe stripe )
+    public PaymentConfigAcceptance setTermsOfService( java.lang.String termsOfService )
     {
-        this.stripe = stripe;
+        this.termsOfService = termsOfService;
         return this;
     }
 }

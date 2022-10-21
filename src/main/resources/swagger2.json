@@ -3088,9 +3088,27 @@
             "type": "object",
             "description": "Payment processors configuration",
             "properties": {
+                "acceptance": {
+                    "description": "The list of conditions to be accepted by the customer",
+                    "$ref": "#/definitions/PaymentConfigAcceptance"
+                },
                 "stripe": {
                     "description": "Stripe payment processor configuration",
                     "$ref": "#/definitions/Stripe"
+                }
+            }
+        },
+        "PaymentConfigAcceptance": {
+            "type": "object",
+            "description": "The list of conditions to be accepted by the customer",
+            "properties": {
+                "privacyPolicy": {
+                    "type": "string",
+                    "description": "Seller's privacy policy URL"
+                },
+                "termsOfService": {
+                    "type": "string",
+                    "description": "Seller's terms of service URL"
                 }
             }
         },
