@@ -2206,7 +2206,7 @@
                     "description": "The personal / deputy account, person name prefix."
                 },
                 "publicContact": {
-                    "description": "The public contact of the account, might be publicly available.",
+                    "description": "The contact details, might be publicly available. Intended for the customers to contact supplier if any questions arise.",
                     "$ref": "#/definitions/AccountPublicContact"
                 },
                 "role": {
