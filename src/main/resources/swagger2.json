@@ -1012,7 +1012,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "vnd.turnon.cloud.always-create-uri",
+                        "name": "Vnd-ConnecSys-Always-Create-Uri",
                         "in": "header",
                         "required": false,
                         "type": "boolean",
@@ -2156,7 +2156,7 @@
                 },
                 "hasPostalAddress": {
                     "type": "boolean",
-                    "description": "If true, the postal address is not same as the company address and must be provided.",
+                    "description": "If true, the postal address is not same as the company/personal address and must be provided.",
                     "default": false
                 },
                 "id": {
@@ -3266,7 +3266,7 @@
                     ]
                 }
             },
-            "description": "Preferred pickup-point identification."
+            "description": "Pickup-point identification."
         },
         "Stripe": {
             "type": "object",
