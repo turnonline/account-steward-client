@@ -1380,6 +1380,140 @@
                 }
             ]
         },
+        "/v1/accounts/{login_id}/payment/revolut/access-token": {
+            "get": {
+                "tags": [
+                    "Configuration"
+                ],
+                "summary": "Return a current Revolut Business access token for the account",
+                "description": "Served to linked service accounts only. Refreshes through the stored refresh token when needed.",
+                "operationId": "getRevolutAccessToken",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The access token and its expiry.",
+                        "schema": {
+                            "$ref": "#/definitions/RevolutAccessToken"
+                        }
+                    },
+                    "401": {
+                        "description": "The error when the authentication credential fails.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "403": {
+                        "description": "The caller is not a service account.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The account has not authorised Revolut access.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "409": {
+                        "description": "Revolut re-authorisation is required.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "502": {
+                        "description": "Revolut rejected the client assertion.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "503": {
+                        "description": "Revolut or the integration is unavailable.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "firebase-a9a2a51a": []
+                    }
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "login_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
+                    "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
+                }
+            ]
+        },
+        "/v1/accounts/{login_id}/payment/revolut/authorization": {
+            "post": {
+                "tags": [
+                    "Configuration"
+                ],
+                "summary": "Issue a Revolut Business authorise URL for the account",
+                "description": "Mints a single-use state bound to the account and returns the Revolut authorise URL. A previously issued, still pending link stops working.",
+                "operationId": "authorizeRevolut",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The authorise URL.",
+                        "schema": {
+                            "$ref": "#/definitions/RevolutAuthorization"
+                        }
+                    },
+                    "400": {
+                        "description": "The account has no Revolut client ID configured.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "The error when the authentication credential fails.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The account doesn't exist.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "503": {
+                        "description": "The Revolut integration is not configured in this environment.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "firebase-a9a2a51a": []
+                    }
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "login_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "description": "The ConnecSys account unique ID, Identity ID (id within login provider) or email as an identification of the authenticated account to work with.",
+                    "x-example": "Wdl98aO0lhgB6gOogt7bvOjPZ"
+                }
+            ]
+        },
         "/v1/accounts/{login_id}/pickup-points": {
             "get": {
                 "tags": [
@@ -3337,6 +3471,34 @@
                 },
                 "keyName": {
                     "type": "string"
+                }
+            }
+        },
+        "RevolutAccessToken": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string",
+                    "description": "Bearer token for the Revolut Business API on behalf of the account."
+                },
+                "expiresOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the access token expires."
+                }
+            }
+        },
+        "RevolutAuthorization": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "The Revolut Business authorise URL to navigate the user to. Carries a single-use state bound to the account."
+                },
+                "expiresOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the state carried by the URL stops being accepted."
                 }
             }
         },
